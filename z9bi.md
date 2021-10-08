@@ -51,7 +51,7 @@ is** [revert](./36re.md)
 ### Unstage files
 
 ```sh
-  git reset <files>
+  git reset [<commitid>|<branchname>] <files>
 ```
 
 ### Restore a file to it's original or previous version
