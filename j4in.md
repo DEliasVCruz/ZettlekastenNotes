@@ -64,3 +64,9 @@ Now **while on that branch** you **reset** the branch to a **new commit**
 ```sh
   git push <remote> --delete <branchname>
 ```
+
+### Rename a local branch
+
+```sh
+  git branch <branchname> -m <newname>
+```
