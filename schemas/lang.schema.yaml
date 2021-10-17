@@ -1,0 +1,23 @@
+version: 1
+schemas:
+- id: l
+  title: language
+  desc: programming language
+  parent: root
+  data:
+    namespace: true
+  children:
+    - operator
+    - data
+    - types
+- id: rst
+  tittle: reStructuredText
+  desc: markup language for docs
+  children:
+    - headers
+- id: operator
+  parent: l
+  children:
+    - comment
+    - scope
+    - iterate

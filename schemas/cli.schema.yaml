@@ -1,0 +1,8 @@
+version: 1
+shema:
+  id: cli
+  title: cmdline
+  desc: comand line applications
+  parent: root
+  data:
+    namespace: true
