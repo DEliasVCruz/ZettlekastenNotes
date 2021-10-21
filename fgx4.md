@@ -37,6 +37,33 @@ To **reword one of the 4 past commits** relative to `HEAD`
   git rebase -i HEAD~4
 ```
 
+### Reorder past commits
+
+If you want to move around past commits so that they will be presented in a
+different order in commit history. You can do it moving the commit lines in the
+interactive rebase windows to the desired order
+
+First select the the range to be rebased
+
+```sh
+  git rebase -i HEAD~2
+```
+
+Once in the interactive window given the following commits
+
+```gitrebase
+  2e7e63e feat: add new (rename branch) recipe  to git.branch
+  414b875 feat: add options and new recipe to git.rebase.interactive
+```
+
+To re arrange the order of the commit you would just have to edit the file so
+that the commits resemble the desired order
+
+```gitrebase
+  414b875 feat: add options and new recipe to git.rebase.interactive
+  2e7e63e feat: add new (rename branch) recipe  to git.branch
+```
+
 ### Rebase on to an upstream branch
 
 You may want to rebase your work on top of an upstream branch `<origin/name>`.
