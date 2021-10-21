@@ -50,8 +50,16 @@ After that you **make changes to the files** and **stage and commit**
 
 ### Unstage files
 
+To stage specific files:
+
 ```sh
   git reset [<commitid>|<branchname>] <files>
+```
+
+To **unstage all files**:
+
+```sh
+  git reset HEAD^
 ```
 
 ### Restore a file to it's original or previous version
