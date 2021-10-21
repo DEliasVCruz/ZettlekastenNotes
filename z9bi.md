@@ -44,9 +44,9 @@ is** [revert](./36re.md)
 ```sh
   git checkout <branchname>
   git reset <commitid>
-# make changes to files
-# stage and commit
 ```
+
+After that you **make changes to the files** and **stage and commit**
 
 ### Unstage files
 
