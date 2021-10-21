@@ -64,6 +64,39 @@ that the commits resemble the desired order
   pick 2e7e63e feat: add new (rename branch) recipe  to git.branch
 ```
 
+### Split commits
+
+There can be a case that you decide certain changes would be better if they
+were committed separately. Here is how you can split a commit into multiple
+parts
+
+For this on the rebase window you will use the `edit` command on the commit you
+want to split
+
+```gitrebase
+  pick 5749c6b refactor(git.reset): extract code comments
+  edit 414b875 feat: add options and new recipe to git.rebase.interactive
+  pick 2e7e63e feat: add new (rename branch) recipe  to git.branch
+```
+
+After that the rebase will stop at the commits that are marked with the `edit`
+command. There you will [unstage all files](./z9bi.md) and **reorganized your
+changes** into **separate commits**
+
+```sh
+  git reset head^
+  git add <files-1>
+  git commit [-m <separate-commit-1>]
+  git add <files-2>
+  git commit [-m <separate-commit-2>]
+```
+
+Finally **continue** with the **rebase** process
+
+```sh
+  git rebase --continue
+```
+
 ### Rebase on to an upstream branch
 
 You may want to rebase your work on top of an upstream branch `<origin/name>`.
