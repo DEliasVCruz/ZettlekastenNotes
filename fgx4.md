@@ -14,7 +14,7 @@ initiating the rebase action
 - squash: Merge commits together with the original message intact
 - fixup: Merge commits but remove the original commit message
 - reword: Use the commit but modified it's message
-- --continue: Continue with rebase process after fixing conlficts
+- --continue: Continue with rebase process after fixing conflicts
 
 ## Synopsis
 
@@ -102,9 +102,9 @@ Finally **continue** with the **rebase** process
 You may want to rebase your work on top of an upstream branch `<origin/name>`.
 
 ```sh
-git remote add [<remote-name>] <remote-url>
-git fetch upstream
-git checkout [<remote-name>] 
-git rebase [<remote-name>]/master
-git push --force origin feature
+  git remote add [<remote-name>] <remote-url>
+  git fetch upstream
+  git checkout [<remote-name>]
+  git rebase [<remote-name>]/master
+  git push --force origin feature
 ```

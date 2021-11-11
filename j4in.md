@@ -16,6 +16,9 @@ They are **cheap to create and destroy**
 - -m: Rename a branch
 - --merged: List branches that are already merged into the current branch
 - --no-merged: List branches that haven't been merged into the current branch
+- -l: List only local branches
+- -r: List or delete only remote branches
+- -a: List both remote tracking branches and local ones
 
 ## Cookbook
 
@@ -43,15 +46,15 @@ To delete an existing branch
 Once you create a new branch it will **point to your current head** to make it
 **point to a different commit** you first have to [checkout the branch](./it3j.md):
 
+And **while on that branch** you [reset](./z9bi.md) the branch to a **new commit**
+
 ```sh
   git checkout <branchname>
-```
-
-Now **while on that branch** you **reset** the branch to a **new commit**
-
-```sh
   git reset --hard <commitid>
 ```
+
+After you reset your branch to a new commit. **All commits that come after this
+version are effectively undone**
 
 ### Create a new branch with your [stashed](./z9bi.md) changes
 
@@ -69,4 +72,13 @@ Now **while on that branch** you **reset** the branch to a **new commit**
 
 ```sh
   git branch <branchname> -m <newname>
+```
+
+### Only clone an specified branch from a remote repo
+
+To fetch a specific branch’s content. This command is useful to fetch the
+required branch quickly
+
+```sh
+  git clone -b <branch name> --single-branch <remote>
 ```

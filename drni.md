@@ -10,8 +10,12 @@ Remember that the merging always happens as **merging the commit into your branc
 ## Synopsis
 
 ```sh
-  git merge <commit2bMerged> [<commitURmergingInto> | default = <currenthead>]
+  git merge <merged-branch> [<branch-to-merge-into> | default = <currenthead>]
 ```
+
+## Options
+
+- --no-ff: Always create a new commit object, avoid fast-forward
 
 ## Cookbook
 

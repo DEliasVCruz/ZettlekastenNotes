@@ -6,12 +6,12 @@ then we woudl use **rebase** instead of the **merge command**
 ## Synopsis
 
 ```sh
-  git rebase <brach you are merging into> [<branch you are merging from> | <HEAD>]
+  git rebase <brach you are rebasing into> [<branch you are rebasing from> | <HEAD>]
 ```
 
 ## Options
 
-- -i:
+- -i: Interactively rebase commits
 
 ## Cookbook
 

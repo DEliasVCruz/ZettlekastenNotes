@@ -17,6 +17,7 @@ You would use this command when you want to **switch** to a **different**
 
 - --detach: Move to the last commit of a branch
 - -b: Create a new branch and move to it
+- --conflict: Discard a conflicting file without discarding the whole merge process
 
 ## Cookbook
 
@@ -55,9 +56,9 @@ commit associated to that branch
 
 - With this **you can**:
   - **Unstage changes** to a file by checking it out
-  - **Revert a file back to a previous version** of it in a past commit
+  - [Restore](./8m7k.md) **a file back to a previous version** of it in a past commit
   - **Bring back deleted files**
-  * Effectively **reset a file back to it's original state**
+  - Effectively **reset a file back to it's original state**
 
 ```sh
   git checkout [<commitid>] <[deleted]file>

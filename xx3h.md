@@ -9,7 +9,7 @@ which commit introduced a bug**.
   git bisect [start|bad|good]
 ```
 
-## Coockbook
+## Cookbook
 
 ### How to find the last commit where you had something that you no longer have
 
