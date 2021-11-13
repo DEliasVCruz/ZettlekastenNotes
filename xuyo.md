@@ -16,7 +16,7 @@ The default behaviour checks current unstaged changes against the current
 
 ## Options
 
-- --staged: Compares staged changes against an specified commit (defaults=current one)
+- --staged: Compares staged changes against an specified commit (defaults=current)
 
 ## Cookbook
 
@@ -24,8 +24,8 @@ The default behaviour checks current unstaged changes against the current
 
 To see what **changes** you have made but **not yet staged** since de last commit
 
-**If** there is **already staged changes to the file**, then it **diffs it agains the
-staged changes**
+**If** there is **already staged changes to the file**, then it **diffs it
+agains the staged changes**
 
 ```sh
   git diff

@@ -28,3 +28,22 @@ Remember that the merging always happens as **merging the commit into your branc
 ```sh
   git merge <branchid> [<ohterbranches>]
 ```
+
+### Merge a remote branch into your local one
+
+When working with [remotes](./95us.md) the **remote branch** your
+[branch](./j4in.md) tracks, **may be some commits ahead**
+
+You must first [review](./m36a.md) what **commits** may have been **aded**
+
+```sh
+  git log --oneline <branch>..origin/<branch>
+```
+
+Then **approve the changes and merge them** into your local main branch
+
+```sh
+  git checkout <branch>
+  git log origin/<branch>
+  git merge origin/<branch>
+```
