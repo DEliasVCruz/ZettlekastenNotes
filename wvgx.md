@@ -7,16 +7,52 @@ A control flow for error handling
 ```py
   try:
     <operations>
+
   execpt <exception_name> as <alias>:
     <operations_if_try_raises_exception>
+
   else:
     <operations_if_try_succeds>
+
   finally:
     <operations_that_always_execute>
 ```
 
 ## Overview
 
-You can handdle [errors](./t7gf.md) with this operation flow. Keep in mind that this
+You can handle [errors](./t7gf.md) with this operation flow. Keep in mind that this
 serves so **the raised exception won't be exposed** to the user and it **will
 not stop the program** from continue executing.
+
+### Coockbook
+
+### Chain exceptions
+
+You can **chain two exceptions** together with the `from` clause, that will **attach**
+the exception **as the caused** of the **manually raised exception**
+
+```py
+  try:
+    print(1 / 0)
+  except Exception as e:
+    raise RuntimeErro("Something bad happened") from e
+```
+
+You can **explicitly suppressed the exception chaining** (the cause exception)
+by passing `None` to the `from` clause
+
+```py
+  try:
+    print(1 / 0)
+  except Exception:
+    raise RuntimeErro("Something bad happened") from None
+```
+
+### Define a exception message and traceback
+
+You can define a **custom error message** for your raised exception and a
+custom **traceback object** with the `with_traceback()` method
+
+```py
+  raise Exception("foo occurred").with_traceback(tracebackobj)
+```

@@ -12,16 +12,6 @@ They are **zero-based** indexed, meaning the **first element** has an index of 0
 
 ## Cookbook
 
-### Create a list
-
-There are **different ways to create** lists
-
-- **Statically** define it
-
-```py
-  my_list = ["first element", "second element", "final element"]
-```
-
 ### Append to an empty list
 
 You can **add more** elements to **the end** of a list with `self.append()`
@@ -128,12 +118,40 @@ You can insert an element into an **arbitrary index position** with
 
 ### Remove the last element of a list
 
-You can **use a list** as a **stack or quee** with the help of `self.pop()`.
-**Together** with `append`, you can **replicate the behavior of a stack**
+You can **use a list** as a **stack (Last In, First Out)** with the help of `self.pop()`.
+
+The `pop()` method will return the poped element in case you want to **capture
+it**
 
 ```py
   courses = ["Math", "English", "Biology"]
-  courses.pop()     # ["Math", "English"]
+  courses.pop()         # ["Math", "English"]
+```
+
+**Together** with `append`, you can **replicate the behavior of a stack**
+
+```py
+  stack = [1, 2, 3]
+  stack.append(4)       # [1, 2 ,3, 4]
+  stack.append(5)       # [1, 2 ,3, 4, 5]
+  stack.pop()           # [1, 2 ,3, 4]
+```
+
+### Use a list as a queue
+
+To use a list as a queue you need to import the `collection.deque` standard
+library module that **was desiged for fast appends and pops from both ends**
+
+Remember that in a queue **new elments are appended** and are **removed from
+the top (First In, First Out)**
+
+```py
+  from collections import deque
+
+  queue = deque(["Eric", "John", "Michael"])
+  queue.append("Terry")                         # Terry arrives
+  queue.popleft()                               # The first to arrive now leaves
+  print(queue)                                  # deque(["Jhon", "Michael", "Terry"])
 ```
 
 ### Perform sorting and reversing a list
@@ -155,6 +173,14 @@ You can also **sort them in decreasing order**
 ```py
   courses = ["Math", "English", "Biology"]
   courses.sort(reverse=True)        # Sort in decreasing order
+```
+
+You can also use the **split syntax** to reverese a list
+
+```py
+  numbers = [1, 2, 3]
+  numbers = numbers[::-1]           # Reverse the list
+  print(numbers)                    # [3, 2, 1]
 ```
 
 ### Sort a list without altering the orignal list
@@ -203,6 +229,24 @@ You can **remove an arbitrary** element that **matches** a given string in a lis
   courses.remove("Math")            # ["English", "Biology"]
 ```
 
+### Remove an element based on it's index
+
+To remove an element from a list based on it's index instead of it's value
+(like you would do with `remove()`) you can use the `del` [statement](./4g9v.md)
+
+```py
+  elements = [1, 2 ,3]
+
+  del elements[0]
+  print(elements)       # [2, 3]
+
+  del elements[:2]
+  print(elements)       # []
+```
+
+You can also use the `pop(<index>)` method. The difference with `del` is that
+the **latter will not return the removed element**
+
 ### Adding up lists together
 
 Using the `+` operator to add list together **won't perform a matricial sum**
@@ -217,3 +261,7 @@ For that you are better off using **numpy**
   list2 = [4, 5 , 6]
   print(list1 + list2)           # [1, 2, 3, 4, 5 , 6]
 ```
+
+### Create a list comprehension
+
+You can **embed loop logic** to create lists at it's definition with [list comprehension]() 

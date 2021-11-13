@@ -35,3 +35,19 @@ When numbers of **different widths** are operated together the **result** will t
 the **width of the less narrow number**
 
 So when **adding** an `int` and a `float` the result will be a float
+
+## Cookbook
+
+### How to round a float into an int
+
+You can round a **decimal number** (`float`) into a **round number** (`int`)
+with the built-in function `round()`
+
+By defualt it rounds to the **nearest int** based on **one decimal point**
+
+```py
+  score = 75.49
+  score2 = 75.51
+  rounded_score = round(score)      # 75
+  rounded_score2 = round(score2)    # 76
+```
