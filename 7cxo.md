@@ -264,4 +264,19 @@ For that you are better off using **numpy**
 
 ### Create a list comprehension
 
-You can **embed loop logic** to create lists at it's definition with [list comprehension]() 
+You can **embed loop logic** to create lists at it's definition with [list
+comprehension](./7lub.md)
+
+### Retrieve the index and value when looping
+
+When looping through a sequence, the **position index and value** can
+be **retrieved at the same time** using the [enumerate]()  function.
+
+```py
+  for i, v in enumerate(['tic', 'tac', 'toe']):
+      print(i, v)
+
+  # 0 tic
+  # 1 tac
+  # 2 toe
+```
