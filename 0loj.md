@@ -2,7 +2,7 @@
 
 An associative array with mapped key: value pair
 
-## Synopis
+## Synopsis
 
 ```py
   my_dict = ["Daniel": 13, "Jose": 25]
@@ -17,7 +17,7 @@ directly or indirectly
 **Keys** must be **unique within** one **dictionary**. You can also use
 [comprehension](./0loj.md) to create dictionaries
 
-## Cookook
+## Cookbook
 
 ### View a list of all the keys in a dictionary
 

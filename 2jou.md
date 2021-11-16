@@ -2,7 +2,7 @@
 
 Conditional loops for repeated operations
 
-## Synopis
+## Synopsis
 
 ```bash
   loop <condition>; do

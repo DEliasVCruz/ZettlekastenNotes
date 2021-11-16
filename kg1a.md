@@ -16,7 +16,7 @@ This **only works with zip** files, check [tar](./m4jp.md) for tar files
 
 ## Options
 
-### Zip commad
+### Zip command
 
 - -q: quiet, hide the output from zip as it runs
 - -r: include directories
@@ -30,7 +30,7 @@ This **only works with zip** files, check [tar](./m4jp.md) for tar files
 - -d: provide a target directory
 - -x: exclude files form being extracted
 
-## CookBook
+## Cookbook
 
 ### Create a compressed zip file
 

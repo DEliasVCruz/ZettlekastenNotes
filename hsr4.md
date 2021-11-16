@@ -2,7 +2,7 @@
 
 A data type like a list but immutable
 
-## Synopis
+## Synopsis
 
 ```py
   tuple = ("foo", "bar", 3)
