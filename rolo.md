@@ -16,6 +16,8 @@ Perform SQL operations on tables with the TABLE keyword
 
 - `CREATE TABLE`: Start a **new table** and **define** it's **structure**
 - `INSERT INTO`: **Specify** what **columns** you are going to **enter values to**
+- `ALTER TABLE`: **Make modifications** to you table after defining it
+- `DELETE FROM`: **Delete records** from a table
 
 ## Cookbook
 
@@ -30,7 +32,7 @@ The basic table creation has the following structure
 ```sql
   CREATE TABLE <table-name> (
       <column-name> <data-type> <constrains>
-  )
+  );
 ```
 
 A **table** should always **have a noun as a name**, in the following example
@@ -52,6 +54,18 @@ You can use the `DROP` command to delete a table
 
 ```sql
   DROP TABLE <table-name>;
+```
+
+### Change the schema of a table after creating it
+
+If you want to **modify your table structure** after you have define it, but you
+don't want to delete and recreate it again, you can use the `ALTER TABLE`
+command
+
+You can `ADD` or `DROP` parts of your schema
+
+```sql
+  ALTER TABLE <table-name> [ADD|DROP] <structure>;
 ```
 
 ### Insert records into tables
@@ -79,4 +93,31 @@ Inside the `VALUES` command:
       <date-type-columns>
   )
   VALUES ('<Value-1>', <Value-2>, DATE '<date-format>');
+```
+
+### Delete a record from a table
+
+When wanting to **delete** a record you **should always use the primary key**
+in the `WHERE` command. But you could delete by any field value with the
+`DELETE` command
+
+```sql
+  DELETE FROM <table-name> WHERE <condition>;
+```
+
+### Define foreign keys
+
+You can **reference** [primary_keys](./wbnd.md) from other tables as foreign keys
+
+Since you are reference fields in other table, the **order in which you create
+those tables matters!!!**, if you create a table that **references** another
+**before** that table and the referenced **field is created**, it will **result
+in an error**
+
+```sql
+  create table person (
+      id bigserial primary key,
+      first_name varchar(50),
+      <table-name>_id BIGINT REFERENCES <table_name> (<referenced_column_name>)
+  );
 ```
