@@ -27,6 +27,8 @@ This are the commands you can use **inside interactive mode**
 - `\c`: **Connect to** an specified **database**
 - `\d`: **List tables** in your database
 - `\i`: **Execute commands** from specified **file**
+- `\x`: View **records in vertical** mode
+- `\copy`:
 
 ## Cookbook
 

@@ -121,3 +121,13 @@ in an error**
       <table-name>_id BIGINT REFERENCES <table_name> (<referenced_column_name>)
   );
 ```
+
+### Reference a field in a different table
+
+You can **reference a column from an specific table** with
+`<table-name>.<column-name>`
+
+```sql
+  SELECT person.first_name, car.brand, car.price FROM person
+  JOIN car ON person.car_id = car.id;
+```

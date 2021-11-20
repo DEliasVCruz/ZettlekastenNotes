@@ -54,3 +54,9 @@ You can **reference primary_keys** from other [tables](./rolo.md) as foreign key
       <table-name>_id BIGINT REFERENCES <table_name> (<referenced_column_name>)
   );
 ```
+
+### Deleting a foreign key record
+
+**If** you are going to **delete a record** that is **referenced in another
+table** as a foreign key, you **first** have to **delete that foreign key
+reference** from the table
