@@ -25,6 +25,7 @@ You can **group conditions** using parenthesis `(...)`
 - `IN`: **Check** if the record **equal** to a **set of values**
 - `LIKE`: **Match** against a **pattern** using **wild cards**
 - `OR`: **One or both** group of condition have to be satisfied
+- `NOT`: **If** value does **not match the condition**
 - `<=`: Less or equal
 - `<>`: Not equal
 - `=`: Equal to
@@ -41,6 +42,16 @@ to an specified **value** use the `=` sign
   SELECT * FROM person WHERE gender = "Female";
 ```
 
+### Filter based on negation
+
+When you want to match every value that **does not satisfy** the **test
+conditon** you can do so with the `NOT` command
+
+```sql
+  SELECT * FROM customers
+  WHERE NOT city = 'Berlin';
+```
+
 ### Filter based on multiple conditions
 
 You can chain conditions with the **logic operators**
@@ -50,6 +61,26 @@ You can chain conditions with the **logic operators**
       gender = "Male" AND
       (contry_of_birth = "Poland" OR country_of_birth = "China") AND
       last_name = "Pietersma";
+```
+
+### Filter based on empty or null values
+
+If you want to select only those **records that have null/empty values** in the
+specified field you can use the `IS NULL` command
+
+```sql
+  SELECT * FROM customers
+  WHERE postal_code IS NULL;
+```
+
+### Filter based on values that are not empty or null
+
+If you want only those records for which the specified **field is not
+null/empty** then use the `IS NOT NULL` command
+
+```sql
+  SELECT * FROM customers
+  WHERE postal_code IS NOT NULL;
 ```
 
 ### Specify a group of values tha record can match
@@ -108,5 +139,21 @@ The wild cards are as follow:
       LIKE "___.com";
 ```
 
+- `[]`: Match **one of** the characters
+
+```sql
+  SELECT * FROM customers
+  WHERE city LIKE '[acs]%'
+
+```
+
 By default, the matching is **case sensitive**. If you want to do a **case
 insensitve patter** matching then use the `ILIKE` command
+
+You can also filter based on a **pattern that is not matched**
+
+```sql
+  SELECT * FROM person
+      WHERE email
+      NOT LIKE "%.com";
+```

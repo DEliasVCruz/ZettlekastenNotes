@@ -28,7 +28,8 @@ This are the commands you can use **inside interactive mode**
 - `\d`: **List tables** in your database
 - `\i`: **Execute commands** from specified **file**
 - `\x`: View **records in vertical** mode
-- `\copy`:
+- `\df`: **List of** all available **functions**
+- `\copy`: Copy data in and out of SQL
 
 ## Cookbook
 

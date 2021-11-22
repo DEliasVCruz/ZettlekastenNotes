@@ -18,6 +18,7 @@ Perform SQL operations on tables with the TABLE keyword
 - `INSERT INTO`: **Specify** what **columns** you are going to **enter values to**
 - `ALTER TABLE`: **Make modifications** to you table after defining it
 - `DELETE FROM`: **Delete records** from a table
+- `AS TABLE`: **Create a table based on another** existing table
 
 ## Cookbook
 
@@ -95,6 +96,16 @@ Inside the `VALUES` command:
   VALUES ('<Value-1>', <Value-2>, DATE '<date-format>');
 ```
 
+### Insert records from another table
+
+You can also **insert data from another table** into a new table **by specifing
+a query** as the data to insert
+
+```sql
+  INSERT INTO mytable
+  (SELECT * FROM person WHERE age < 25);
+```
+
 ### Delete a record from a table
 
 When wanting to **delete** a record you **should always use the primary key**
@@ -115,9 +126,9 @@ those tables matters!!!**, if you create a table that **references** another
 in an error**
 
 ```sql
-  create table person (
-      id bigserial primary key,
-      first_name varchar(50),
+  CREATE TABLE person (
+      id BIGSERIAL PRIMARY KEY,
+      first_name VARCHAR(50),
       <table-name>_id BIGINT REFERENCES <table_name> (<referenced_column_name>)
   );
 ```
@@ -130,4 +141,27 @@ You can **reference a column from an specific table** with
 ```sql
   SELECT person.first_name, car.brand, car.price FROM person
   JOIN car ON person.car_id = car.id;
+```
+
+### Copy a table
+
+You can **create new tables based on other tables** structures with the `AS TABLE`
+command.
+
+Furthermore, you **can specify if you don't want to copy the table data**
+along (meaning you only want the structure)
+
+- **Only** copy the **table structure**
+
+```sql
+  CREATE TABLE copy_table
+  AS TABLE my_table
+  WITH NO DATA;
+```
+
+- Copy with the structure and data
+
+```sql
+  CREATE TABLE copy_table
+  AS TABLE my_table;
 ```
