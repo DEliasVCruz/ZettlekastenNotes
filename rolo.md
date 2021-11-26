@@ -19,8 +19,19 @@ Perform SQL operations on tables with the TABLE keyword
 - `ALTER TABLE`: **Make modifications** to you table after defining it
 - `DELETE FROM`: **Delete records** from a table
 - `AS TABLE`: **Create a table based on another** existing table
+- `TRUNCATE`: **Delete** all the **data inside** a table
 
 ## Cookbook
+
+### The difference between '' and ""
+
+In `PostgreSQL` when referencing **columns and table** names if you **want
+blank spaces and upper case** letter to be **accounted**, you need to sorround
+them in `""` (**double quote**), **otherwise** if it has blaik spaces it will not
+work and **will lower case everything**.
+
+For **everything else** when needing to account for special characters use `''`
+(**single quote**)
 
 ### Create a new table
 
@@ -47,6 +58,19 @@ we create the **person table**
       gender VARCHAR(6),
       date_of_birth DATE,
   );
+```
+
+### Create a table based on a query
+
+You can create a **new table based on the results of a query**
+with `create table <name> as select`, this will work like a brand new table
+that you can use like anyother. **Unlike** [views](./qxox.md), you **can
+perform additional** [sorting](./lhgd.md) on your resulting table
+
+```sql
+  create table peron_names as
+  select concat(name, '(', left(occupation, 1), ')') as ocs from occupations
+  order by name;
 ```
 
 ### Delete a table

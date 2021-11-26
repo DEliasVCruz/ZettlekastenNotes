@@ -25,14 +25,14 @@ You can use the `list()`, built-in function to return a list of all the keys
 defined in the dictionary **in insertio order**
 
 ```py
-  tel = {'jack': 4098, 'sape': 4139}
+  tel = {'jack': 4098, 'guido': 4139, 'irv': 3000}
   list(tel)         # ['jack', 'guido', 'irv']
 ```
 
 - To view a sorted list of all the keys use `sorted()`
 
 ```py
-  tel = {'jack': 4098, 'sape': 4139}
+  tel = {'jack': 4098, 'guido': 4139, 'irv': 3000}
   sorted(tel)       # ['guido', 'irv', 'jack']
 ```
 
@@ -41,7 +41,7 @@ defined in the dictionary **in insertio order**
 You can change the value pair of a given key by referencing it
 
 ```py
-  tel = {'jack': 4098, 'sape': 4139}
+  tel = {'jack': 4098, 'sape': 4139, 'guido': 4000}
   tel["guido"] = 4127
   print(tel)        # {'jack': 4098, 'sape': 4139, 'guido': 4127}
 ```

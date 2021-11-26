@@ -17,6 +17,7 @@ working with. As long as you **have write permissions** for the remote
 
 - `--all`: Push all branches at once
 - `--force`: Overwrite remote history
+- `--set-upstream`: Define the remote branch to track
 
 ## Cookbook
 
@@ -48,4 +49,14 @@ associated branch when pushing. You **have to mannually push them**
 
 ```sh
   git push --tags <remote> [<branch>]
+```
+
+### Set a remote branch to track
+
+Your local branches can be set to **track** [remote](./95us.md) **branches**
+automatically **so** that there will **not need to specify what remote branch**
+to do so and **will do it automatically**
+
+```sh
+  git push --set-upstream <remote-name> <branch-name>
 ```

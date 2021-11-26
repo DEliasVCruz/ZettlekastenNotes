@@ -11,9 +11,9 @@ Embed loop logic to create data structures at their definition
 ## Overview
 
 They provide a concise way to create [list](./7cxo.md),
-[dictionaries](./0loj.md) and [sets](./8u8t.md) where **each element** is the
-result of **some operations** applied **to each member** of **another
-sequence** or iterable
+[dictionaries](./0loj.md),[sets](./8u8t.md) and [generators](./grh0.md) where
+**each element** is the result of **some operations** applied **to each
+member** of **another sequence** or iterable
 
 ## Cookbook
 
@@ -139,4 +139,20 @@ This the **same as**:
 
   print(transposed)
   # [[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
+```
+
+### Create a generator comprehension
+
+You can create a generator object without defining a whole [function](./8xrz.md)
+
+```py
+  my_generator = (num**2 for num in range(5))
+  # <generator object <genexpr> at 0x107fbbc78>
+```
+
+This is an [iterable](./p7q9.md) so you can use the `next()` function on it to
+get a value
+
+```py
+  print(next(my_generator))     # 0
 ```

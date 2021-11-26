@@ -7,7 +7,7 @@ Your standard function definition but in Python
 ```py
   def function_name(args):
     # Operations
-    return # Optional
+    [return|yield]
 ```
 
 ## Overview
@@ -18,6 +18,17 @@ return** [None](./y624.md)
 ## Statements
 
 - `return`: Explicitly return a value or object and exit function
+- `yield`: Returns a [generator](./grh0.md) object
+
+### The yield statement
+
+Unlike `return` this **will not exit** out of your **function**. You can still
+do operations after it
+
+Here **after each yield** the **state** of the function **is remembered** on
+the next call
+
+Using it in a fucntion **will create** a [generator](./grh0.md) object
 
 ## Cookbook
 

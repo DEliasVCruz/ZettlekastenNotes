@@ -30,7 +30,7 @@ For example a **foreign key that is present in both tables**
 
 ```sql
   SELECT person.first_name, car.brand, car.price FROM person
-  JOIN car ON person.car_id = car.id;
+  [INNER] JOIN car ON person.car_id = car.id;
 ```
 
 ### Left join (Left Bijection)
@@ -62,7 +62,7 @@ expression, **and use** the `USING` command
 ### Perform a cross join
 
 You can **combine each row** of one table with each row of another **withouth**
-an **specific join point**. 
+an **specific join point**.
 
 This will give you every possible combination of rows. For example if there are
 5 rows in one table and 10 in the other then the join will give you 50 rows

@@ -16,7 +16,8 @@ the `WHERE` command
 You can **filter based on one** column or **many columns** as well as **any
 number of conditions** in the order that they are defined
 
-You can **group conditions** using parenthesis `(...)`
+- You can **group conditions** using parenthesis `(...)`
+- You **can't use** aggregator [function](./x41v.md) like `MIN()` inside `WHERE`
 
 ### Logic Operators
 
@@ -24,6 +25,7 @@ You can **group conditions** using parenthesis `(...)`
 - `BETWEEN`: **Select the records** that lie **inside** the specified **range**
 - `IN`: **Check** if the record **equal** to a **set of values**
 - `LIKE`: **Match** against a **pattern** using **wild cards**
+- `REGEXP`: **Match** against a pattern using **regex**
 - `OR`: **One or both** group of condition have to be satisfied
 - `NOT`: **If** value does **not match the condition**
 - `<=`: Less or equal
@@ -45,7 +47,7 @@ to an specified **value** use the `=` sign
 ### Filter based on negation
 
 When you want to match every value that **does not satisfy** the **test
-conditon** you can do so with the `NOT` command
+condition** you can do so with the `NOT` command
 
 ```sql
   SELECT * FROM customers
@@ -83,7 +85,7 @@ null/empty** then use the `IS NOT NULL` command
   WHERE postal_code IS NOT NULL;
 ```
 
-### Specify a group of values tha record can match
+### Specify a group of values the record can match
 
 When you want to filter based on several values a field record has to match you
 could chain `<field> = <value> OR` statements or you could use the `IN`
@@ -118,7 +120,7 @@ inside a range** of values you can use the `BETWEEN` command
 
 ### Filter based on a pattern
 
-You can match **based on** a general **pattern** defined by wild cards and the `like`
+You can match **based on** a general **pattern** defined by wild cards and the `LIKE`
 command
 
 The wild cards are as follow:
@@ -148,7 +150,7 @@ The wild cards are as follow:
 ```
 
 By default, the matching is **case sensitive**. If you want to do a **case
-insensitve patter** matching then use the `ILIKE` command
+insensitive patter** matching then use the `ILIKE` command
 
 You can also filter based on a **pattern that is not matched**
 
@@ -156,4 +158,14 @@ You can also filter based on a **pattern that is not matched**
   SELECT * FROM person
       WHERE email
       NOT LIKE "%.com";
+```
+
+### Filter based on a regular expression
+
+For more complex string matching you can use the `REGEXP` command to **match**
+against a **regex** pattern
+
+```sql
+  SELECT city FROM station
+  WHERE city REGEXP '^[aeiou].*'
 ```

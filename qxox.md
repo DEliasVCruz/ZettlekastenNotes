@@ -5,7 +5,7 @@ Limited queriable versions of other tables
 ## Synopsis
 
 ```sql
-  CREATE VIEW <view-name> AS
+  CREATE VIEW <view-name> [(column names)] AS
   <QUERY>;
 ```
 
@@ -36,3 +36,14 @@ Then you can reference the view like any other table
 ```sql
   SELECT * FROM people_on_mars;
 ```
+
+## Do union of two sorted views
+
+You can't make further [sorting](./lhgd.md) to an already sorted view. Even if
+it's two separated and individualy sorted views coupled together by
+[UNION](./c76a.md) command
+
+If you attempt this then the **sorting of both views will be lost**
+
+**If** you **want** to do **union** on two **sorted queries sorround each one**
+with `()`

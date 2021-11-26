@@ -6,7 +6,7 @@ You can aggregate repeated records of a field
 
 ```sql
   SELECT <column-name> FROM <table-names>
-  GROUP BY <column-name> HAVING <condition>;
+  GROUP BY <column-name[s]> HAVING <condition>;
 ```
 
 ## Overview
@@ -16,9 +16,13 @@ them as a resuming.
 
 It is most commonly used with other aggregate [functions](./x41v.md) like `COUNT()`
 
+When **using multiple selected columns** and only **one agreggator** the `group by`
+**must reference the other** columns
+
 ### Commands
 
 - `HAVING`: Perform **additional filtering after the aggregation** and summary
+  - **Unlke** `WHERE` you **can use aggregate functions** after `HAVING`
 
 ## Cookbook
 
@@ -28,7 +32,7 @@ You can perform some **extra filtering** after the aggregation with the `HAVING`
 command, this command is **different from** `WHERE` because it **does it's**
 [filtering](./m2xg.md) **after the aggregation**
 
-It also **must come before** the `ORDER BY` command
+It also **must come before** the [sortin](./lhgd.md) `ORDER BY` command
 
 ```sql
   SELECT country_of_birth, COUNT(*) FROM person
