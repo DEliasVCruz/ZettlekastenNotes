@@ -1,3 +1,0 @@
-# lang.py.type.object
-
-

@@ -188,8 +188,8 @@ You can also use the **split syntax** to reverese a list
 You can **sort** the elements in a list **without modifying** the **original
 list** with the `sorted()` builtin
 
-Furthermore `sorted()` works on any [iterable]() including **strings** in which
-case it will **return** a **list of sorted characters** in the string
+Furthermore `sorted()` works on any [iterable](./p7q9.md) including **strings**
+in which case it will **return** a **list of sorted characters** in the string
 
 ```py
   courses = ["Math", "English", "Biology"]
@@ -270,7 +270,7 @@ comprehension](./7lub.md)
 ### Retrieve the index and value when looping
 
 When looping through a sequence, the **position index and value** can
-be **retrieved at the same time** using the [enumerate]()  function.
+be **retrieved at the same time** using the [enumerate](./cy10.md) function.
 
 ```py
   for i, v in enumerate(['tic', 'tac', 'toe']):

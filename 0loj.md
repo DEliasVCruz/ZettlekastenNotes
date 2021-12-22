@@ -66,6 +66,19 @@ value pairs
   print(tel)        # {'sape': 4139, 'guido': 4127, 'jack': 4098}
 ```
 
+### Build a dictionary from two lists
+
+Following the same process from the past recipe we can *use* the `zip()`
+**function** **to build** the **list of** `key: value` **pairs** from two
+separete lists
+
+```py
+  names = ["Daniel", "Jose"]
+  ages = [23, 22]
+  my_dict = dict(zip(names, ages))
+  print(my_dict)                    # {'Daniel': 23, 'Jose': 22}
+```
+
 ### Loop through key and values at the same time
 
 When **looping through dictionaries**, the **key and value** can be

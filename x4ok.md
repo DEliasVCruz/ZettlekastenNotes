@@ -51,3 +51,22 @@ By defualt it rounds to the **nearest int** based on **one decimal point**
   rounded_score = round(score)      # 75
   rounded_score2 = round(score2)    # 76
 ```
+
+- [How to Round Numbers in Python](https://realpython.com/python-rounding/)
+
+### Turn a number into it's corresponding ascii character
+
+If you want to turn a **number into the character** that it represents in the
+**alphabet** you can use the built-in function `chr()`
+
+This function will **turn it into** it's **unicode character**, so if you want
+to turn it **base on the alphabet** index you will have to **add** `96` (based
+on American alphabet)
+
+```py
+  character = chr(2 + 96)
+  print(character)          # b
+```
+
+You can also do the same process backwards with a [string](./4t3v.md) character
+with `ord()`

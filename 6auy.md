@@ -12,7 +12,7 @@ used in **conditional operations**
 
 ### Cookbook
 
-### What defines a thruthy and falsy
+### What defines a truthy and falsy
 
 In python every number other than `0` constitutes a **thruty** meaning they
 will **pass a conditional test** just like `True` would

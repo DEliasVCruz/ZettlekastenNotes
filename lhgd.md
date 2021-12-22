@@ -68,7 +68,7 @@ You can even **add** an **extra** `GROUP By` **sorting** condition **for** the
 
 ```sql
   (SELECT name, year FROM bands ORDER BY name)
-  UNION
+  UNION all
   (SELECT name, year FROM albums ORDER BY name)
   ORDER BY year;
 ```
