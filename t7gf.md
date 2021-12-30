@@ -18,3 +18,12 @@ a custom** error message
   if [condition]:
     raise ValueError("Wrong Value Inputed!")
 ```
+
+### File related errors
+
+- `FileNotFoundError`: when a file or directory is requested but doesn’t exist.
+- `OSError`: In a system function related error (see [os](./ik75.md) module)
+
+### Operations related errors
+
+- `RecursioError`: When the maximum depth of a recursion function has been reached
