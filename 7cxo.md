@@ -280,3 +280,43 @@ be **retrieved at the same time** using the [enumerate](./cy10.md) function.
   # 1 tac
   # 2 toe
 ```
+
+### Loop over different lists at the same time
+
+To **loop** over **two or more sequences** at the same time, the **entries can
+be paired** with the `zip()` function.
+
+```py
+  questions = ['name', 'quest', 'favorite color']
+  answers = ['lancelot', 'the holy grail', 'blue']
+  for q, a in zip(questions, answers):
+      print('What is your {0}?  It is {1}.'.format(q, a))
+
+  # What is your name?  It is lancelot.
+  # What is your quest?  It is the holy grail.
+  # What is your favorite color?  It is blue.
+```
+
+### Flaten a list
+
+You can flatten a list (make all it's elements into a single list) with:
+
+- A [for loop](./cy10.md)
+- A [list comprehensio](./7lub.md)
+- The `chain()` function from the [itertools](./v1d5.md) module
+
+```py
+  my_list = [[1, 2, 3], [4, 5, 6]]
+
+# Flaten with a for loop
+  for sublist in my_list:
+    for element in sublist:
+      flaten_list.appen(element)
+
+# Flaten with a list comprehension
+  flaten_list = [element for sublist in my_list for element in sublist]
+
+# Flaten with `itertools.chain()`
+  import itertools
+  flaten_list = itertools.chain(*my_list)
+```

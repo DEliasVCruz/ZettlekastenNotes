@@ -27,3 +27,7 @@ a custom** error message
 ### Operations related errors
 
 - `RecursioError`: When the maximum depth of a recursion function has been reached
+
+### General error
+
+- `IndexError`: When trying to reach and index outside of reach, in a sequence

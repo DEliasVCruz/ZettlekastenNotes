@@ -1,7 +1,7 @@
 # lang.rst.syntax.intra_links
 
 You can provide **cross-referential links** within the same or related documents in
-your proyect. **You will need** `Sphinx` for this functionality
+your project. **You will need** `Sphinx` for this functionality
 
 ## Synopsis
 

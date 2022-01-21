@@ -22,6 +22,9 @@ You can picture this as a **dynamic table** in `excel` where the `pivot_table` m
 serves as the sidebar where you constructed the dynamic table by arraying the
 rows, columns and aggregated values
 
+- You could also get a **similar result** for less complex cases using [group
+  by](./tiqw.md) method similar to the `group by` from [sql](./6mxs.md)
+
 ## Cookbook
 
 ### Create a pivot table
