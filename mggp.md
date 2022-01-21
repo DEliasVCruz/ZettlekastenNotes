@@ -1,0 +1,39 @@
+# lang.py.oper.classes.built_functions
+
+There are some built in functions to operate on classes and their attributes
+
+## Synopsis
+
+```py
+  [get|del|has|set]attr(<object>, <attribute>[, [<default>|<value>]])
+```
+
+## Overview
+
+`Python` has some built-in functions to operate on the attributes of an
+instance of a [class](./unhs.md)
+
+- `getattr()`: Get the value of an attribute
+- `setattr()`: Change the value of an attribute
+- `hasattr()`: Check if the attribute exists
+- `delattr()`: Remove an attribute
+
+## Cookbook
+
+### Get the value of an attribute
+
+It accepts **three arguments**:
+
+- `object`: The instance
+- `attribute`: The searched attribute
+- `default`: What to return if the attribute does not exists
+
+```py
+  class Person:
+    name = "John"
+    age = 36
+    country = "Norway"
+
+  x = getattr(Person, 'page', 'my message')
+  print(x)                                      # my message
+```
