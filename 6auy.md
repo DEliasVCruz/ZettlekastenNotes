@@ -1,4 +1,4 @@
-# lang.py.type.bool
+# lang.py.data.bool
 
 Represents true or false
 

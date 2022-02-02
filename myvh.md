@@ -93,3 +93,12 @@ for the rows
 ```py
   nba.loc[nba["fran_id"] == "Lakers", "team_id"].value_counts()
 ```
+
+### Perform row wise operations
+
+To get **apply** an [aggregation function](./l1ya.md) **on one or every row**
+of a dataframe you need to pass the `axis=1` to the aggregationn function
+
+```py
+  df["Totals"] = df.sum(axis=1)
+```

@@ -1,4 +1,4 @@
-# lang.py.type.dictionary
+# lang.py.data.dictionary
 
 An associative array with mapped key: value pair
 
@@ -22,7 +22,7 @@ directly or indirectly
 ### View a list of all the keys in a dictionary
 
 You can use the `list()`, built-in function to return a list of all the keys
-defined in the dictionary **in insertio order**
+defined in the dictionary **in inserti order**
 
 ```py
   tel = {'jack': 4098, 'guido': 4139, 'irv': 3000}
@@ -54,6 +54,29 @@ You can delete a key and it's value with the `del` **keyword**
   tel = {'jack': 4098, 'sape': 4139}
   del tel["sape"]
   print(tel)        # {'jack': 4098}
+```
+
+### Create a dictionary with iterable keys
+
+**Normally** you **wouldn't** be able to pass an **iterable as the key** of a dictionary,
+other than [strings](./4t3v.md), since they **keys have to be inmutable** and list
+an other iterables tend to be mutable
+
+You can use [frozensets](./8u8t.md) to pass a set, an iterable, as the key of a
+dictionary
+
+```py
+  key_1 = frozenset([1, 2])
+  key_2 = frozenset([3, 4])
+
+  my_dict = {key_1: 'good', key_2: 'bad'}
+  pairs = []
+
+  for key, value in my_dict.items():
+      for element in key:
+          pairs.append((element, value))
+
+# [(1, 'good'), (2, 'good'), (3, 'bad'), (4, 'bad')]
 ```
 
 ### Build dictionaries from sequences of key: value pairs
@@ -91,4 +114,23 @@ retrieved **at the same time** using the `items()` method.
 
   # gallahad the pure
   # robin the brave
+```
+
+### Loop over the keys of a dictionary
+
+The **default** way of looping over a dictionary is doing it **by it's keys**
+
+```py
+  for key in my_dict:
+      print(key)
+```
+
+### Get a list of the the values
+
+You can get a list of all the values in your dictionary with the `values()`
+method
+
+```py
+  for value in my_dict.values():
+      print(value)
 ```

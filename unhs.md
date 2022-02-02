@@ -300,7 +300,7 @@ function
 You can use a special **magic attribute** `__dict__` to display all the
 **attributes** that **belong** to an **object** (be it class or instance)
 
-It will **convert** all your **attributes** in a **{key: value} pair** dictionary
+It will **convert** all your **attributes** in a **{key: value} pair** [dictionary](./0loj.md)
 format. So it's **great for** debugging and testing purposes
 
 ```py

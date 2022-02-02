@@ -25,12 +25,35 @@ There are **different** kind of **plotting options** that you can supply to the
 You can **customize** your **plot figure** by passing this arguments:
 
 - `kind`: The type of plot
+- `ax`: Define a custom [pyplot](./3s1w.md) axis to use
 - `xlabel`: The string to display as the **x axis label**
 - `ylabel`: The string to display as the **y axis label**
 - `title`: The string to display as the **title of the figure**
 - `figsize`: A [tuple](./hsr4.md) with the **size of the figure** `(x, y)`
 
 ## Cookbook
+
+### Use a custom pyplot figure
+
+You can provide your own `pyplot` figure and axis to display your `dataframe`
+and thus have more granuality on it's display
+
+For this you need to pass the `axis` to the `ax` parameter. And the operate on
+`ax` and `fig` as a normal `pyplot` figure
+
+```py
+  import matplotlib.pyplot as plt
+
+  fig, ax = plt.subplots(figsize=(10, 6))
+  df.plot(ax=ax, kind='bar')
+
+  ax.set_xlable('My X label')
+  ax.set_ylable('My Y label')
+
+  fig.suptitle('My Custom Visualization')
+
+  fig.show()
+```
 
 ### Create a line plot figure
 

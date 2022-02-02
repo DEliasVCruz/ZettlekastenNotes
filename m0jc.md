@@ -11,7 +11,10 @@ Working with string values in your datarame
 ## Overview
 
 You can operate on the values of your [dataframe](./5t4z.md) like strings and
-have **access** to **regular string methods** as well as other **extra ones**
+have an [accessor](./4sli.md) to **regular string methods** as well as other
+**extra ones**
+
+This returns another vecotorized `Series` object
 
 - `contains()`: Returns a series objects with [booleans](./6auy.md)
 - `replace()`: Replace the matching regex with other string
@@ -52,7 +55,7 @@ the values](./67tx.md) with the matched [regular expression](./cbw4.md) or
 
 ### Replace values based on a regular expression
 
-YOu can replace a matched regex with another substring with the `replace()`
+You can replace a matched regex with another substring with the `replace()`
 method and **leave the rest intact**
 
 ```py

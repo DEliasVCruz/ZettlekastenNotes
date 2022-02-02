@@ -46,7 +46,7 @@ You can filter based on wheter the values of a row are `NaN` with the
   df[df['py-score'].isnull()]
 ```
 
-You can also filter based on rows that don't have missing values with
+You can also filter based on rows that don't have [missing values](./yptc.md) with
 `notnull()` method
 
 ```py
@@ -95,5 +95,43 @@ You can **check for emptyness** in the values of your column with the `empty`
 attribute
 
 ```py
-  df[~(df["Notes"].empty)]      # Get all non emtpy "Notes" columns
+  df[~(df["Notes"].empty)]           # Get all non emtpy "Notes" columns
+```
+
+### Filter based on datetime objects
+
+You can filter based on the attributes of a datetime object with the `dt`
+[datetime accessor](./umhf.md)
+
+```py
+  df[df["Date"].dt.quarter > 2]      # Date is over the second quarter of the year
+```
+
+### Filter based on index or column labels
+
+You can filter based on the names of the [index labels](./271q.md) or the
+[column names](./6j2u.md) rather than on it's contents with:
+
+- `filter()` method:
+
+  - `axis`: Wheter to operate on column names or index labels
+    - `0`: **Default**, filter based on **index labels**
+    - `1`: Filter based on **column names**
+  - `regex`: Use a [regular expression](./cbw4.md) as the filter criteria
+
+```py
+  filetered_columns = df.filter(regex=r"^Grade [A-Z]$", axis=1)
+```
+
+### Create array of booleans based on index filtering
+
+You can **use** the `isin()` method **to get** a `Series` object of
+**booleans** that can be passed as an array like for general filtering
+
+Unlike the `filter()` method that will return a dataframe of filter rows or
+columns.
+
+```py
+  df.set_index('date_time', inplace=True)
+  df[df.index.hour.isin(range(5, 10))]  # Get rows where hour is between 5 and 10
 ```

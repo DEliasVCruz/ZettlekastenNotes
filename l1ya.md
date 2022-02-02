@@ -33,7 +33,7 @@ can be:
 You could also get a [summaries version](./czyt.md) of all this with `describe()`
 
 ```py
-  df_exams['Math Scores'].sum()                     # Sum all the rows
+  df_exams['Math Scores'].sum()                     # Total column sum
   df_exams['Math Scores'].count()                   # Count the number of rows
   df_exams['Math Scores'].mean()                    # Find the average value
   df_exams['Math Scores'].std()                     # Find the standard deviation
@@ -129,23 +129,33 @@ This will be the **same as**:
   df['total'] = 0.4 * df['py-score'] + 0.3 * df['django-score'] + 0.3 * df['js-score']
 ```
 
-### Perform rolling window operations
+### Get the largest elements of a column
 
-Sometimes you may want to perform operations were you **operate on a set of
-values in a window** and this window **moves as we traverse the elements** in
-our series
+You can use `nlargest()` to get the `n` **number of** the **largest elements**
+in a column and, in the case of a dataframe, you **can specify by what column
+to do the ranking**
 
-You can do this with the `rolling()` method that **creates a fixed size window**
-that moves across by each element in your `Series`
-
-**At the beginning only the end of the window** will be positioned on the first
-value and more of it will be moving inside the `Series` accordingly
-
-It will **not perform operations unless it has all values** that **correspond
-to** the **size** of the **window**. You **can specify** a number of **minimum
-values** it needs with the `min_periods` argument
+**In this example** we get the 5 rows from the dataframe, in descending order,
+with the greatest scores
 
 ```py
-  df = pd.DataFrame({'B': [0, 1, 2, np.nan, 4]})
-  df.rolling(window=2, min_periods=1).sum()         # Operate with at least one value
+  df.nlarges(5, 'Scores')
+```
+
+### Perform aggregation opeartions row wise
+
+By **default** when using an **aggregation function** on a `dataframe` object
+it will do the agregation for **every element** in **each** [column](./6j2u.md)
+
+If you wanted to get the aggregation for all the elements in each
+[row](./myvh.md), **row wise aggregation**, then you need to **pass** the
+`axis=1` argument to the aggregation function
+
+- `sum(axis=1)`: Get the total sum of each row
+- `avg(axis=1)`: Get the avarage of each row
+
+**In this example** we get the total sum of all the elements in a row
+
+```py
+  df["Totals"] = df.sum(axis=1)
 ```

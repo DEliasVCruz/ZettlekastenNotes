@@ -39,6 +39,20 @@ You can create [dataframe](./5t4z.md) form many types of data types
   - You can read from a csv file
   - `data = pd.read_csv(<csv_file.csv>)`
 
+### Create a Series
+
+**Each row** in a `dataframe` is an instance of a `Series` object. To create a new
+`Series` object use the `Series()` class
+
+```py
+  row = {
+      'Column_1'; 'value_colum_1'
+      'Column_2'; 'value_colum_2'
+      'Column_3'; 'value_colum_3'
+    }
+  new_sr = pd.Series(row)
+```
+
 ### Display all columns, amount of not-nulls and their data types
 
 You can display a list of all the columns in your dataframe and the type of
@@ -106,7 +120,7 @@ They also accept an integer to **modify** the **number of rows** being display
 
 ### Create a startup options file
 
-YOu can modify pandas options with `pd.set_option()` and create a script that
+You can modify pandas options with `pd.set_option()` and create a script that
 will run them at the start of your interpreter session
 
 For more options you can check the [options

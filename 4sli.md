@@ -75,7 +75,7 @@ the rows with value 0
   df.loc[14:, 'py-score'] = 0
 ```
 
-### Use conditional expression inside accessors
+### Use conditional boolean expressions inside accessors
 
 You can use **conditional expression** to will operate as [filters](./niq3.md)
 **inside** your accessor.
@@ -86,3 +86,25 @@ like** to perform slicing
 ```py
   filtered_column_df = df.loc[df[<filter-column>] == "<filter-value>", "<accessed-column>"]
 ```
+
+### Selecting data with accessors and `isin()`
+
+Since the `loc` accessor can accept any array like and conditional expression
+return a `Series` object of `boolean` values. We can use it to select rows
+
+**In this example** we get the rows where the date hour is between 5 and 10 pm
+
+```py
+  df.set_index('date_time', inplace=True)
+
+  peak_hours = df.index.hour.isin(range(5, 10))
+  df.loc[peak_hours, 'average_price']
+```
+
+### Accessors of the `Series` object
+
+The `Series` object has three distinct accessors:
+
+- `cat`: Working with [categorical](./p1g8.md) data
+- `str`: Working with values as [string](./m0jc.md) data in a vectorized way
+- `dt`: Working with [datetime](./6e6x.md) values

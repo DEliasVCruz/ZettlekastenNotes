@@ -1,4 +1,4 @@
-# lang.py.type.list
+# lang.py.data.list
 
 List are the basic type of **data structure** in python
 
@@ -47,9 +47,9 @@ If you **try to extend** a list with a **single string** then it will add **each
 character** one by one **as new elements** in the list
 
 ```py
-  my_string = ["apple", "pear", "banan"]
-  my_string.append("hola")
-  print(my_string)              # ["apple", "pear", "banan", "h", "o" , "l", "a"]
+  my_list = ["apple", "pear", "banan"]
+  my_list.extend("hola")
+  print(my_list)                # ["apple", "pear", "banan", "h", "o" , "l", "a"]
 ```
 
 ### Reference an element in a list

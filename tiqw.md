@@ -90,6 +90,15 @@ one of the agregation functions to each selected column
   tips.groupby('day')['tip'].agg(["mean", "count"])
 ```
 
+### Use aggregation on more than one column
+
+You can have **more than one aggregation** function on **more than one column**
+at the same time after a group by operation
+
+```py
+  df.groupby('Gender')['Height', 'Weight'].agg(['mean', 'median'])
+```
+
 ### Apply a custom aggregation function
 
 You can use a **custom function** as your **aggregator function** with
@@ -130,7 +139,30 @@ index** to change the names of this use the `rename_axis()` method
       ).rename_axis(["year", "quarter"])
 ```
 
-### Make the grouping fields as regular columns
+### Emulate a pivot table behaviour (tabla dinamica)
+
+You can emulate the behaviour of a [pivot table](./spn7.md) with the
+`unstack()` method
+
+- Using `groupby` is faster than `pivot_table` but less idiomatic
+
+- By default when you group by more than one column, they become a
+  **hierarchical index**.
+
+- In a pivot table you want one of the columns to
+  be the index and the other the column of your pivot table
+
+That's why you use `unstack()` that by **default** will **turn** the **socond
+group by** column **into** the **column** of your **pivto table**
+
+- `fill_value`: What **value to use if** a value is **not found** for the
+  combination of row column
+
+```py
+  df.groupby(['Station', 'Year'])['Sales'].sum().unstack(fill_value=np.nan)
+```
+
+### Change the grouping fields as regular columns
 
 By **default** the **values** of the **group** columns becomes a **hierarchical index**
 label.
@@ -167,4 +199,28 @@ the columns you are **aggregating**
   mentions_fed.groupby(
      df["outlet"], sort=False
      ).sum().nlargest(10).astype(np.uintc)
+```
+
+### Iterate over group by groups
+
+You can [iterate](./p7q9.md) over a group by object and it will **return** a
+**tuple** of the **group label** and the **group dataframe**
+
+```py
+  for group, table in grouped:
+    print(group)
+    print(table, end='\n\n')
+```
+
+### Get a group by it's group name
+
+When you create a group object you **can use** the following **methods**:
+
+- `groups.keys()`: Get then names of the group labels
+- `get_group()`: Get a group dataframe from the group name
+
+```py
+  grouped = df.groupby('Gender')
+  grouped.groups.keys()                     # dict_keys(['M', 'F'])
+  male_group  = grouped.get_group('M')
 ```

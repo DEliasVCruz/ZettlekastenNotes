@@ -1,4 +1,4 @@
-# lang.py.type.tuple
+# lang.py.data.tuple
 
 A data type like a list but immutable
 

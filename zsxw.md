@@ -40,8 +40,8 @@ You can iterate over the columns of a dataframe with `iteritems()`
 You can iterate over the columns of a dataframe with `iterrows()`
 
 ```py
-  for row_label, row in df.iterrows():
-      print(row_label, row, sep='\n', end='\n\n')
+  for index_label, row in df.iterrows():
+      print(index_label, row, sep='\n', end='\n\n')
 ```
 
 ### Create named tuples from the rows
