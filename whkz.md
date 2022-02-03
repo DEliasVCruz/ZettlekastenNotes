@@ -1,4 +1,4 @@
-# lang.py.module.openpyxl
+# lang.py.module.excel.openpyxl
 
 Work with excel files
 

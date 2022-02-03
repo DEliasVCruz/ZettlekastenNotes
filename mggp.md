@@ -37,3 +37,14 @@ It accepts **three arguments**:
   x = getattr(Person, 'page', 'my message')
   print(x)                                      # my message
 ```
+
+### Find if an object is an instance of a class
+
+You can us the `isisntance()` function to find if an object is an instance of a
+class. This is better than using the `type()` function
+
+```py
+  obj = 12
+  if isinstance(obj, int):
+      print(f'{obj} is an integer')
+```

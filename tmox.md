@@ -1,4 +1,4 @@
-# lang.py.module.openpyxl.sheet
+# lang.py.module.excel.openpyxl.sheet
 
 Operate on a workbook standalone sheet object
 

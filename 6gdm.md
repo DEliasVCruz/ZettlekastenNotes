@@ -1,4 +1,4 @@
-# lang.py.module.openpyxl.images
+# lang.py.module.excel.openpyxl.images
 
 Insert images into your workbook file
 

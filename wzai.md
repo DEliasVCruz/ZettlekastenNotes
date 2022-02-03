@@ -1,4 +1,4 @@
-# lang.py.module.openpyxl.iterate
+# lang.py.module.excel.openpyxl.iterate
 
 How to iterate over the rows and columns of an excel file
 

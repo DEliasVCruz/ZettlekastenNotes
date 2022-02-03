@@ -38,6 +38,7 @@ function.
 - `sep=<string>`: What is the column separator character
 - `chunksize=<int>`: The amount of rows to read at a time
 - `header=<int>`: The 0 index line that will serve as the header
+- `names=<list>`: A [list](./7cxo.md) of names that will serve as column names
 - `converters=<dictionary>`: Do some pre-processing on the columns as `Series` object
   - Takes a dicttionary where the keys are the columns and the values the operations
 - `usecols=[<list-of-cols]`: The columns you want to use
@@ -104,17 +105,14 @@ You can specify various columns as one single column that will be of `datetime` 
 
 ### Create a datraframe from an excel file
 
-You will also **need one** of this libraries **installed**:
+You will also **need** the [openpyxl](./whkz.md) library **installed**:
 
-- [openpyxl](https://openpyxl.readthedocs.io/en/stable/)
-- [xlrd](https://xlrd.readthedocs.io/en/latest/)
+- Some **usefull parameters** are:
 
-Some **usefull parameters** are:
-
-- `sheet_name`: The name or 0 based index of the sheet to read from
-- `parse_dates=[<column-name>]`: Specify the values of column are dates
-  - It also uses 0 based index, 0 being the index column
-- `usecols=[<list-of-cols]`: The columns you want to use
+  - `sheet_name`: The name or 0 based index of the sheet to read from
+  - `parse_dates=[<column-name>]`: Specify the values of column are dates
+    - It also uses 0 based index, 0 being the index column
+  - `usecols=[<list-of-cols]`: The columns you want to use
 
 ```py
   df_csv = pd.read_excel("<excel_file.xlsx>"[,index_col=0, usecols=[0, 1, 2]])

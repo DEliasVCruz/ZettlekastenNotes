@@ -31,3 +31,7 @@ a custom** error message
 ### General error
 
 - `IndexError`: When trying to reach and index outside of reach, in a sequence
+
+### Indexing related error
+
+- `KeyError`: When you try to access an index that is out of range or does not exists

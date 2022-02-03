@@ -1,4 +1,4 @@
-# lang.py.module.openpyxl.format.style
+# lang.py.module.excel.openpyxl.format.style
 
 Format the style of the cells and their values
 

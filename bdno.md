@@ -1,4 +1,4 @@
-# lang.py.module.openpyxl.row_cols
+# lang.py.module.excel.openpyxl.row_cols
 
 Manipulate and manage rows and columns of a sheet
 

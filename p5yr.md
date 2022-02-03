@@ -1,4 +1,4 @@
-# lang.py.module.pickle
+# lang.py.module.serialize.pickle
 
 Serialize complex data structures into compact byte format
 
@@ -18,7 +18,7 @@ Keep in mind that this pickle objects can only be operated by `Python` and are
 non human readable
 
 If you want a human readable and language agnostic form of serialization, you
-can use [json]()
+can use [json](./evtw.md)
 
 ## Cookbook
 

@@ -1,4 +1,4 @@
-# lang.py.module.openpyxl.workbook
+# lang.py.module.excel.openpyxl.workbook
 
 Create or load an excel file
 
