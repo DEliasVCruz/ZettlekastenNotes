@@ -6,9 +6,9 @@ Some characters are evaluated to have **non-literal**
 
 - `$`: **Expansion**, introduces various types of expansions
 
-- `[[ ]]`: **Test**, an evaluation of a expression
+- `[[ ]]`: **Test**, an [evaluation](./ax6g.md) of an expression
 
-  - You can use this to **evaluate an expressionn** (true or false)
+  - You can use this to **evaluate an expressionn** (`true` or `false`)
 
   - This version of test **may be preferred** over the old `[ ]` since:
     - **Easier** to use

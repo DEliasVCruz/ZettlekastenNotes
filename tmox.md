@@ -58,7 +58,7 @@ You can access and use a sheet object by **refering to it by** it's name like a
 
 You can create new sheets with the `create_sheet()` method
 
-- `index`: Indicate the `0 index` position of the sheet in the list of sheets
+- `index`: Indicate the `zero-index` position of the sheet in the list of sheets
 
 ```py
   print(workbook.sheetnames)        # ['Hoja 1', 'Hoja 2']

@@ -47,6 +47,7 @@ accepts a `Path` object. **Or** you can **use** the `Path.open()` method
 
 ```py
   path = pathlib.Path.home().joinpath('Descargas', 'prueba.txt')
+
   with path.open(mode='r') as file:
     ...
 ```
@@ -188,6 +189,8 @@ that match a **glob** patter with:
 
 - `glob()`: Find files based on a glob pattern (`*`, `?`) in the **current directory**
 - `rglob()`: Find files based on a glob pattern **recursively on all directories**
+
+They return a [generator](./grh0.md) object
 
 ```py
   import collections

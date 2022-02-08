@@ -18,18 +18,18 @@ Sort can take **stdin** but it can only sort **new line separated** strings
 
 ## Cookbook
 
-### Sort a string of characters
+### Sort a string of space separated characters
 
-If you have a string of **substrings** separated but some **delimeter other
-than** `\n`, you can first pipe the string trhoug [tr]() and then pipe it into
-`sort`
+If you have a string of **substrings** separated but some **delimiter other
+than** `\n`, you can first pipe the string through [tr](./bjmz.md) and then
+pipe it into `sort`
 
 ```bash
   words_to_sort="fruit apple game day"
   sorted="$(echo "${words_to_sort}" | tr " " "\n" | sort -u | tr "\n" " ")"
 ```
 
-### Sort the characters of a single string
+### Sort the characters of a single word string
 
 If you want to sort the characters in a string. First you have to **split
 them** by a delimiter, you can do this by **appending them to** an

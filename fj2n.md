@@ -151,7 +151,7 @@ upon union result in misssing values
   inner_joined = pd.concat([climate_temp, climate_precip], join="inner")
 ```
 
-### Start with a fresh 0 index after union
+### Start with a fresh `zero-index` after union
 
 When performing union by default the original index label for each row will be
 preserve from their original dataframe. To start the new dataframe with new 0

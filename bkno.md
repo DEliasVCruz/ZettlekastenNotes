@@ -37,7 +37,7 @@ function.
 - `parse_dates=[<column-name>]`: Specify the values of column are dates
 - `sep=<string>`: What is the column separator character
 - `chunksize=<int>`: The amount of rows to read at a time
-- `header=<int>`: The 0 index line that will serve as the header
+- `header=<int>`: The `zero-index` line that will serve as the header
 - `names=<list>`: A [list](./7cxo.md) of names that will serve as column names
 - `converters=<dictionary>`: Do some pre-processing on the columns as `Series` object
   - Takes a dicttionary where the keys are the columns and the values the operations

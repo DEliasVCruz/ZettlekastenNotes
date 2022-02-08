@@ -19,7 +19,7 @@ And the `for` that can appear in **two different forms**
 
 - `while <command>`: **Repeat** so long **as** command is executed **successfully**
 - `until <command>`: **Repeat** so long **as** command is executed **unsuccessfully**
-- `for <variable> in <words>`: Repeat the loop for each word
+- `for <variable> in <arguments>`: Repeat the loop for each argument
 
 ## Cookbook
 
@@ -28,7 +28,8 @@ And the `for` that can appear in **two different forms**
 It will execute the operations **as long as** something happen
 
 ```bash
-  while true; do
+  while [[ true ]]
+  do
     echo "Infinite loop"
   done
 ```
@@ -43,6 +44,19 @@ It's barely used since it is similar to `while !`
   done
 ```
 
+### Do a simple for loop over the file system
+
+Bash has **built in support for itrating over files** in the file system. You can
+create a simple for loop that will **go over an specified directory file** with
+magic methods
+
+```sh
+  for file in *.md
+  do
+    echo "File Name: $file\n"
+    cat "$file"
+```
+
 ### Define a range to loop through
 
 If you want a **range to loop** your variable through,
@@ -50,7 +64,8 @@ If you want a **range to loop** your variable through,
 and one to end at
 
 ```bash
-  for i in (10..1); do
+  for i in (10..1)
+  do
     echo "$1 empty cans of beer"
   done
 ```

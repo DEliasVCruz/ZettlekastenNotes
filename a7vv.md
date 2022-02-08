@@ -17,7 +17,7 @@ Conditional statements structure and particularities in bash
 ## Overview
 
 The **condition** has to be **defined** with the [special character](./tmd3.md)
-`[[ ]]`, since this **evaluates an expression** (`true` or `false`)
+`[[ ]]`, since this [evaluates](./ax6g.md) **an expression** (`true` or `false`)
 
 The **condition** has to **come with** a `;` right **after it**
 

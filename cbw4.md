@@ -43,7 +43,7 @@ special meanings** and are written **inside square brackets**
 
 - `backslash`: **Escape** especial character to **use them literally**
 
-- `^`: Matches the **begining of a line**
+- `^`: Matches the **beginning of a line**
 
 - `$`: Matches the **end of a line**
 
@@ -60,7 +60,7 @@ special meanings** and are written **inside square brackets**
 
 #### The Full Stop
 
-In regex `.` works similiar to the `?` **glob** as it will only match **any one
+In regex `.` works similar to the `?` **glob** as it will only match **any one
 single character** including spaces but not newlines
 
 For example, `.ar` will match **car**, **par**ked and **gar**age
@@ -92,7 +92,7 @@ For example, to match **zero or more repetitions** of the string `ab`
 We can also use **alternation** meta character `|`. For example, to **match** a
 **lowercase** `c`, `g` or `p`, **followed** by `a`, **followed** by `r`.
 
-Thou you could **achive the same result** using `[cgp]ar` which will **take
+Thou you could **achieve the same result** using `[cgp]ar` which will **take
 less steps**
 
 The advantage is that this **not only matches** but **also captures** the match
@@ -105,9 +105,9 @@ to **be used by a parent language** like python or any other
 #### Non Capturing Groups
 
 A capturing group that **matches the character but does not capture the
-group**. It is denoted by **beginign** the group **with** a `?:`
+group**. It is denoted by **beginning** the group **with** a `?:`
 
-They can be **usefull** in **find-and-replace** functionality or when **mixed
+They can be **useful** in **find-and-replace** functionality or when **mixed
 with other** capturing groups
 
 For example this will be **similar** to `(c|g|p)ar` **but will not capture the
@@ -117,21 +117,21 @@ match**
   (?:c|g|p)ar
 ```
 
-#### Look Arounds
+#### Look Around
 
 They are expression that are **not part of the final match** but indicate that
-the matching expression has to **either be or not be preceed or followed** by that
-expresion
+the matching expression has to **either be or not be preceded or followed** by that
+expression
 
 They work inside **capturing groups** `(...)`
 
 - `?=`: What the expression **must be followed by**
 - `?!`: What the expression **must not be followed by**
-- `?<=`: What the expression **must be preceed by**
-- `?<!`: What the expression **must not be preceed by**
+- `?<=`: What the expression **must be preceded by**
+- `?<!`: What the expression **must not be preceded by**
 
 In this example the look around **ensures** that the expression **must be
-followed by** a whitespace and the word "fat"
+followed by** a white space and the word "fat"
 
 ```regex
   (T|t)he(?!\sfat)
@@ -139,7 +139,7 @@ followed by** a whitespace and the word "fat"
 
 ## Cookbook
 
-### Negate a set of characterss
+### Negate a set of characters
 
 **Preceding a character inside brackets** with an `^` will match **any character
 except** it
@@ -151,13 +151,22 @@ by the letter `r`.
   [^c]ar
 ```
 
+### Stop an expression from being greedy
+
+If you have an expression like `.*` it will do the matching greedily if you wan
+to avoid this you can append a `?` to it
+
+```regex
+  he.*?\s
+```
+
 ### Match any number of lowercase letters in a row
 
 ```regex
   [a-z]*
 ```
 
-### A string surronded by 0 or any number of spaces
+### A string surrounded by 0 or any number of spaces
 
 ```regex
   \s*cat\s*
@@ -171,7 +180,7 @@ Here is matching **from the first** `c` **to the last** `t` on the sentence
   c.+t => "cat sat on the mat"
 ```
 
-### Specifiy a minimum number of repetitions
+### Specify a minimum number of repetitions
 
 This will match 2 or more digits
 
