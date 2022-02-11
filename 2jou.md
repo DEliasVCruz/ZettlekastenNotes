@@ -55,6 +55,7 @@ magic methods
   do
     echo "File Name: $file\n"
     cat "$file"
+  done
 ```
 
 ### Define a range to loop through

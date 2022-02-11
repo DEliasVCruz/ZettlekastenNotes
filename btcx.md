@@ -14,9 +14,34 @@ Sort can take **stdin** but it can only sort **new line separated** strings
 
 ## Options
 
-- -u: Sort and leave only unique values
+- `-u`: Sort and leave only unique values
+- `-r`: Sort on reverse order
+- `-n`: Sort numerically
+- `-R`: Do a random sort
+- `--ignore-case`: Sort ignoring casing
 
 ## Cookbook
+
+### Sort and get unique lines
+
+You can use the `-u` option to get **only the unique values** after sorting. For
+**more options** for working with unique values check [uniq](./kxv.md)
+
+```sh
+  sort -u file.txt
+```
+
+### Sort based on numerical values
+
+By **default** it will sort based on the `ASCII` table (alphabetic order), if
+you want **to sort numbers** you need to **pass** the `-n` option
+
+```sh
+  echo "4\n3\n2" | sort -n
+  -> 2
+  -> 3
+  -> 4
+```
 
 ### Sort a string of space separated characters
 
