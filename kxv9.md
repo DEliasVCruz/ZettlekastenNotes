@@ -240,8 +240,9 @@ using** `Poetry` with your **existing project**
 
 ### Execute python commands
 
-You can execute python commands like [pytest]() with the `run` command. This
-will **execute** them **using** your **virtual environment version** of those commands
+You can execute python commands like [pytest](./b42q.md) with the `run`
+command. This will **execute** them **using** your **virtual environment
+version** of those commands
 
 ```sh
   poetry run pytest

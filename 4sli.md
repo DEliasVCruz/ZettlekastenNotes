@@ -108,3 +108,15 @@ The `Series` object has three distinct accessors:
 - `cat`: Working with [categorical](./p1g8.md) data
 - `str`: Working with values as [string](./m0jc.md) data in a vectorized way
 - `dt`: Working with [datetime](./6e6x.md) values
+
+### Locate rows or columns `zero-index` with labels
+
+You can use the `iloc` accessor in combination with the `get_loc()` method of a
+[Index](./271q.md) object to achieve the same result as `loc`
+
+**In this example** we get the row at `zero-index` position `0` in the `py-score`
+column
+
+```py
+  df.iloc[0, df.columns.get_loc('py-score')] = 13
+```

@@ -10,8 +10,11 @@ Perform grouping similar to sql query group by
 
 ## Overview
 
-Refers to a process where we split a dataset into groups, apply some function
-(typically aggregation) , and then combine the groups together.
+Refers to a **process where** we:
+
+1. **Split a dataset into groups**
+2. **Apply some** [aggregation](./s2s7.md) **function** to all it's elements
+3. And **combine the reduced groups together**
 
 Keep in mind that you could **achieve something similar** with
 [pivot](./spn7.md) tables
@@ -61,55 +64,13 @@ This is also needed to apply this for **other aggregation functions**:
   tips.groupby('sex')['total_bill'].min()
 ```
 
-### Use more than one aggregation function
-
-You can use more than one aggregation function on **more than one column** with
-`agg`. It comes in the form of a [dictionary](./0loj.md) where:
-
-- **keys**: The column name
-- **values**: Calable functions
-  - It can have **more than one function** in the form of a [list](./7cxo.md)
-  - This is usefull if you want to use the different functions on the same column
-
-```py
-  tips.groupby('day').agg({'tip': np.mean, 'day': np.size}
-```
-
-This is all **similar to** the following `sql` query
-
-```sql
-  SELECT day, AVG(tip), COUNT(day)
-  FROM tips
-  GROUP BY day;
-```
-
-It can also accept a single [list](./7cxo.md) in which case it will apply evry
-one of the agregation functions to each selected column
-
-```py
-  tips.groupby('day')['tip'].agg(["mean", "count"])
-```
-
-### Use aggregation on more than one column
-
-You can have **more than one aggregation** function on **more than one column**
-at the same time after a group by operation
-
-```py
-  df.groupby('Gender')['Height', 'Weight'].agg(['mean', 'median'])
-```
-
 ### Apply a custom aggregation function
 
-You can use a **custom function** as your **aggregator function** with
-`apply()`. Keep in mind that this **can be a slow operation**, and if posible
-try to avoid it.
+You can use a **custom function** as your **aggregation function** with either:
 
-```py
-  df.groupby("outlet", sort=False)["title"].apply(
-      lambda ser: ser.str.contains("Fed").sum()
-  ).nlargest(10)
-```
+- [apply()](./j4nr.md): Perform **any operation** and get a new indexing (**slowest**)
+- [agg()](./s2s7.md): **Aggregate** groups and get **groups as the new index**
+- [transform()](./f2vu.md): Do some operation **without altering the original indexing**
 
 ### Group on more than one column
 
@@ -130,7 +91,7 @@ This is all **similar to** the following `sql` query
 
 ### Rename the index of multiple column group by
 
-When you group by more than one column the resulting index is a **hierarchical
+When you group by more than one column the resulting [index](./271q.md) is a **hierarchical
 index** to change the names of this use the `rename_axis()` method
 
 ```py
@@ -142,9 +103,9 @@ index** to change the names of this use the `rename_axis()` method
 ### Emulate a pivot table behaviour (tabla dinamica)
 
 You can emulate the behaviour of a [pivot table](./spn7.md) with the
-`unstack()` method
+`unstack()` [index stacking](./tahi.md) method
 
-- Using `groupby` is faster than `pivot_table` but less idiomatic
+- Using `groupby` is **faster** than `pivot_table` but **less idiomatic**
 
 - By default when you group by more than one column, they become a
   **hierarchical index**.
@@ -171,6 +132,7 @@ To **force** use a **numerical index** and have the group fields as new
 **regular columns** in your dataframe, use the `as_index=False` argument
 
 - This **most** closely **mimics** the result of an `sql` **group by**
+- The **new index defaults** to a `RangeIndex`
 
 ```py
   df.groupby(["state", "gender"], as_index=False)["last_name"].count()

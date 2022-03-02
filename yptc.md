@@ -62,11 +62,11 @@ dataframe
 
 ### Drop columns with missing values
 
-To drop all columns that have missing values you can **pass** the `axis=1` argument
+To drop all columns that have missing values you can **pass** the `axis="columns"` argument
 to the `dropna()` method
 
 ```py
-  data_without_missing_columns = df.dropna(axis=1)
+  data_without_missing_columns = df.dropna(axis="columns")
 ```
 
 ### Check for null values

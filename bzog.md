@@ -1,4 +1,4 @@
-# lang.py.module.pandas.sorting.index
+# lang.py.module.pandas.index.sorting
 
 Sorting base on the row index or column labels
 
@@ -32,9 +32,12 @@ sorting
 
 ### Sort the columns of your dataframe
 
-You can **sort** your **colummns** with the `axis=1` argument, so that they
+You can **sort** your **colummns** with the `axis="columns"` argument, so that they
 will be in ascending or descending order **based on** their **label names**.
 
+- You can also use the `columns` name
+
 ```py
-  df.sort_index(axis=1, ascending=False)
+  df.sort_index(axis="columns", ascending=False)
+  df.sort_index(axis='columns', ascending=False)    # Same result as before
 ```

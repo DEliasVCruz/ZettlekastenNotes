@@ -136,10 +136,10 @@ The dafault behaviour of `concat()` is to union dataframe one on top of the
 other.
 
 But you can also union them along side eachother and increase the number of
-columns with `axis=1`
+columns with `axis="columns"`
 
 ```py
-  concatenated = pandas.concat([df1, df2], axis=1)
+  concatenated = pandas.concat([df1, df2], axis="columns")
 ```
 
 ### Drop columns or rows with NaN values after union

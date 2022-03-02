@@ -52,12 +52,26 @@ we create the **person table**
 
 ```sql
   CREATE TABLE person (
-      id int,
+      id BIGSERIAL,
       first_name VARCHAR(50),
       last_name VARCHAR(50),
       gender VARCHAR(6),
       date_of_birth DATE,
   );
+```
+
+### Avoid creating a table if it already exists
+
+You can use the `IF NOT EXISTS` command to **avoid creating** the table **if**
+a table with the same name **already exists**
+
+```py
+  CREATE TABLE IF NOT EXISTS users (
+    id BIGSERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    age INTEGER,
+    gender TEXT,
+  )
 ```
 
 ### Create a table based on a query
@@ -68,9 +82,10 @@ that you can use like anyother. **Unlike** [views](./qxox.md), you **can
 perform additional** [sorting](./lhgd.md) on your resulting table
 
 ```sql
-  create table peron_names as
-  select concat(name, '(', left(occupation, 1), ')') as ocs from occupations
-  order by name;
+  CREATE TABLE peron_names as
+  SELECT CONCAT(name, '(', LEFT(occupation, 1), ')') AS ocs
+  FROM occupations
+  ORDER BY name;
 ```
 
 ### Delete a table
@@ -163,7 +178,8 @@ You can **reference a column from an specific table** with
 `<table-name>.<column-name>`
 
 ```sql
-  SELECT person.first_name, car.brand, car.price FROM person
+  SELECT person.first_name, car.brand, car.price 
+  FROM person
   JOIN car ON person.car_id = car.id;
 ```
 

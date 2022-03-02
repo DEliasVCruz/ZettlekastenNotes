@@ -69,9 +69,9 @@ A copy of each version of the merge file is kept during the merging process
 
 To refer to each version append this to the `<file-name>` respectively
 
-- :1: = base version
-- :2: = local
-- :3: = remote
+- `:1:` = base version
+- `:2:` = local
+- `:3:` = remote
 
 ```sh
 # View the base hunk

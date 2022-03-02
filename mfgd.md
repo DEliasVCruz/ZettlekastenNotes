@@ -35,6 +35,7 @@ order of the elements in the list**
   - Sort **based on** the **results of mapping** the passed **function** to
     each field in the column
 - `axis`: **Indicate** to sort by rows (`axis=0`) or columns (`axis=1`)
+  - You can also use `columns` passes as a string
 - `na_position`: Whether you want rows with `NaN` to appear first
 - `kind`: The type of **sorting algorithm** to use
   - This is **ignored when** sorting on **more than one column**

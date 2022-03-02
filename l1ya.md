@@ -34,9 +34,12 @@ You could also get a [summaries version](./czyt.md) of all this with `describe()
 
 ```py
   df_exams['Math Scores'].sum()                     # Total column sum
+  df_exams['Math Scores'].prod()                    # Total column product
   df_exams['Math Scores'].count()                   # Count the number of rows
   df_exams['Math Scores'].mean()                    # Find the average value
+  df_exams['Math Scores'].median()                  # Find the median value
   df_exams['Math Scores'].std()                     # Find the standard deviation
+  df_exams['Math Scores'].var()                     # Find the variance
   df_exams['Math Scores'].min()                     # Find the minimum value
   df_exams['Math Scores'].max()                     # Find the maximum value
   df_exams['Math Scores'].agg(("min", "max"))       # Find the min and max value
@@ -109,6 +112,24 @@ of **numeric type** with the `to_numeric()` function
   df["Grades"] = pd.to_numeric(df["Grades"])
 ```
 
+### Perform aggregation opeartions row wise
+
+By **default** when using an **aggregation function** on a `dataframe` object
+it will do the agregation for **every element** in **each** [column](./6j2u.md)
+
+If you wanted to get the aggregation for all the elements in each
+[row](./myvh.md), **row wise aggregation**, then you need to **pass** the
+`axis="columns"` argument to the aggregation function
+
+- `sum(axis="columns")`: Get the total sum of each row
+- `avg(axis="columns")`: Get the avarage of each row
+
+**In this example** we get the total sum of all the elements in a row
+
+```py
+  df["Totals"] = df.sum(axis="columns")
+```
+
 ### Use numpy functions for operations
 
 You can use [numpy](./5nfr.md) functions and **pass parts of** your
@@ -116,11 +137,11 @@ You can use [numpy](./5nfr.md) functions and **pass parts of** your
 instead of a numpy array
 
 **In this example** to calculate the **weighted average of three columns for
-each row** we use the `np.average()` function with the `axis=1` argument
+each row** we use the `np.average()` function with the `axis="columns"` argument
 
 ```py
   scores = df.iloc[:, 2:5]
-  df['total'] = np.average(scores, axis=1, weights=[0.4, 0.3, 0.3])
+  df['total'] = np.average(scores, axis="columns", weights=[0.4, 0.3, 0.3])
 ```
 
 This will be the **same as**:
@@ -129,33 +150,16 @@ This will be the **same as**:
   df['total'] = 0.4 * df['py-score'] + 0.3 * df['django-score'] + 0.3 * df['js-score']
 ```
 
-### Get the largest elements of a column
+### Get the largest and smallest elements of a column
 
 You can use `nlargest()` to get the `n` **number of** the **largest elements**
 in a column and, in the case of a dataframe, you **can specify by what column
-to do the ranking**
+to do the ranking on**
 
 **In this example** we get the 5 rows from the dataframe, in descending order,
 with the greatest scores
 
 ```py
-  df.nlarges(5, 'Scores')
-```
-
-### Perform aggregation opeartions row wise
-
-By **default** when using an **aggregation function** on a `dataframe` object
-it will do the agregation for **every element** in **each** [column](./6j2u.md)
-
-If you wanted to get the aggregation for all the elements in each
-[row](./myvh.md), **row wise aggregation**, then you need to **pass** the
-`axis=1` argument to the aggregation function
-
-- `sum(axis=1)`: Get the total sum of each row
-- `avg(axis=1)`: Get the avarage of each row
-
-**In this example** we get the total sum of all the elements in a row
-
-```py
-  df["Totals"] = df.sum(axis=1)
+  df.nlargest(5, columns=['Scores'])
+  df.nsmallest(1, columns=['Score'])    # The record with the smallest score
 ```

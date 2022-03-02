@@ -273,8 +273,8 @@ When looping through a sequence, the **position index and value** can
 be **retrieved at the same time** using the [enumerate](./cy10.md) function.
 
 ```py
-  for i, v in enumerate(['tic', 'tac', 'toe']):
-      print(i, v)
+  for index, value in enumerate(['tic', 'tac', 'toe']):
+      print(index, value)
 
   # 0 tic
   # 1 tac

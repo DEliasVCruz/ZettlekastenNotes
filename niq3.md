@@ -120,7 +120,7 @@ You can filter based on the names of the [index labels](./271q.md) or the
   - `regex`: Use a [regular expression](./cbw4.md) as the filter criteria
 
 ```py
-  filetered_columns = df.filter(regex=r"^Grade [A-Z]$", axis=1)
+  filetered_columns = df.filter(regex=r"^Grade [A-Z]$", axis="columns")
 ```
 
 ### Create array of booleans based on index filtering

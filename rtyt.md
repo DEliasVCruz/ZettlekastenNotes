@@ -18,7 +18,7 @@ apply the custom function to every element (**every individual cel**) in your
 dataframe and **replace** it **with** the **returned output**
 
 Keep in mind that this **can have significant runtime** for larger datasets.
-Try to apply **vectorized operations** wherever posible instead
+Try to apply **vectorized operations** wherever possible instead
 
 ## Cookbook
 

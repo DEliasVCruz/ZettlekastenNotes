@@ -1,12 +1,14 @@
 # lang.py.module.pandas.cut
 
+Segment and label ranges of data values into categorical bins
+
 ## Synopsis
 
 ```py
   cut_series = pd.cut(x=<series-object>,
                       bins=<list-of-ranges>,
                       include_lowest=<boolean>,
-                      labels=<list-of-mappings>).astype(<casted-type>)
+                      labels=<list-of-mappings>)[.astype(<casted-type>)]
 ```
 
 ## Overview

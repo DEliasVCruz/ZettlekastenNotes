@@ -15,7 +15,7 @@ You can use `apply` to [iterate](./zsxw.md) over every `Series` of either the
 
 The main difference with [applymap](./rtyt.md) method is:
 
-- `applymap)`: Will apply the function to every element in the dataframe
+- `applymap`: Will apply the function to every element in the dataframe
   - It's the **slowest**
   - Operates on every single element of the `dataframe`
 
@@ -50,8 +50,8 @@ In the end the `apply` method **will return a new** `Series` object
       return rate * kwh
 
   df['cost_cents'] = df.apply(
-      lambda row: apply_tariff(
-          kwh=row['energy_kwh'],
-          hour=row['date_time'].hour),
-      axis=1)
+      lambda ser: apply_tariff(
+          kwh=ser['energy_kwh'],
+          hour=ser['date_time'].hour),
+      axis="columns")
 ```
