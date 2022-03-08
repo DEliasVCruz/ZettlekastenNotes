@@ -52,7 +52,7 @@ You can also **access a whole row** by it's **row label** using the `loc[]`
   df.iloc[0]        # Get all the elements for each column in the first row
 ```
 
-### Insert a new row to your dataframe
+### Append a new row to your dataframe
 
 One way to insert a new row to your dataframe is by first creating it as an
 stand alone series using the `Series` class
@@ -63,7 +63,7 @@ With the following **arguments**:
 - `index`: The **index labels** are the would be **column names**
 - `name`: The **would be label** for the new **row**
 
-**After** creating the `series` representing our new row. You can **append** the
+**After** creating the `Series` representing our new row. You can **append** the
 new row to the **end of the dataframe** with the `append()` method
 
 The `append()` method **does not perform mutation** and instead returns a new
@@ -72,6 +72,23 @@ dataframe
 ```py
   john = pd.Series(data=['John', 'Boston', 34, 79], index=df.columns, name=17)
   df = df.append(john)
+```
+
+### Append a new row from a dictionary
+
+If creating a new `Series` object is overkill for you. You can pass a
+[dictionary](./0loj.md) as the row data and pass the `ignore_index=True` argument
+
+```py
+  df = df.append(
+    {
+      "first_name": first_name,
+      "last_name": last_name,
+      "title": book_title,
+      "publisher": publisher_name,
+    },
+    ignore_index=True,
+  )
 ```
 
 ### Delete a row from your dataframe

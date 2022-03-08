@@ -145,6 +145,20 @@ a query** as the data to insert
   (SELECT * FROM person WHERE age < 25);
 ```
 
+### Deletingn records best practices
+
+Some application may chose never to delete records, either to avoid accidents
+or for data preservation
+
+Instead they implment an `active` attribute that is set to a boolean value and
+[update](./u635.md) it's state if it's acctivated (`1` or `True`) or not (`0`
+or `False`)
+
+```sql
+  SELECT * FROM some_table
+  WHERE active = 1;
+```
+
 ### Delete a record from a table
 
 When wanting to **delete** a record you **should always use the primary key**
@@ -178,7 +192,7 @@ You can **reference a column from an specific table** with
 `<table-name>.<column-name>`
 
 ```sql
-  SELECT person.first_name, car.brand, car.price 
+  SELECT person.first_name, car.brand, car.price
   FROM person
   JOIN car ON person.car_id = car.id;
 ```

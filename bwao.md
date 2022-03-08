@@ -128,13 +128,14 @@ or a directory. They **return** a **boolean**
   path.is_file()        # True
 ```
 
-### Moving and deleting files
+### Moving or ranaming files
 
 You can perform basic file system level operations like moving, updating and
 deleting files. They do this without given warnings
 
 - `replace()`: **Move** a **file** to a new location.
   - If the destination already exists it will overwrite it
+- `rename()`: Renames a file to a new given name
 
 To **write a file and ensure it does not exist** yet you can structure like
 
@@ -145,6 +146,26 @@ destination = pathlib.Path('new/path/file.txt')
 
 if not destination.exists():
     source.replace(destination)
+```
+
+### Delete a file path
+
+You can use the `unlink()` method of your `Path` object to delete a file, it
+can also delete simlinks
+
+```py
+  my_file = Path('my_file.txt')
+  my_file.unlink()                  # Delete the file
+```
+
+### Delete a directory path
+
+If you want to delete directories you can use the `rmdir()` to delete empty
+directories, it won't do recursive deletion of files nor directories
+
+```py
+  dir_path = Path('my_dir/')
+  dir_path.rmdir()              # Removes the empty directory
 ```
 
 ### Iterate over the files in a direcotry
