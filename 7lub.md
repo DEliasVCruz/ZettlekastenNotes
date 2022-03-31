@@ -11,7 +11,7 @@ Embed loop logic to create data structures at their definition
 ## Overview
 
 They provide a concise way to create [list](./7cxo.md),
-[dictionaries](./0loj.md),[sets](./8u8t.md) and [generators](./grh0.md) where
+[dictionaries](./0loj.md), [sets](./8u8t.md) and [generators](./grh0.md) where
 **each element** is the result of **some operations** applied **to each
 member** of **another sequence** or iterable
 

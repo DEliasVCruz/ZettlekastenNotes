@@ -54,6 +54,23 @@ To reference another table entity as a foreing-key you need to pass to the
 
 ```
 
+### Define a one to one relationship
+
+To define a one to one relationship you can do so by referencing both side with
+either `Required()` or `Optional()` at both sides
+
+```py
+  class TeamMember(db.Entity):
+      name = Required(str)
+      team = Optional('Team')
+      captain_of = Optional('Team')
+
+  class Team(db.Entity):
+      name = Required(str)
+      team_members = Set(TeamMember)
+      captain = Optional(TeamMember, reverse='captain_of')
+```
+
 ### Define a one to many realtionship
 
 Here we have an entity that holds a reference `foreing-key` to another entity.

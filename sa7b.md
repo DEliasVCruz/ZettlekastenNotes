@@ -141,6 +141,22 @@ database. You can specify a different name for the database column with the
       email = Required(str, columns='emai_adress')
 ```
 
+### Define cascade delete rules
+
+When defining an attribute that references or is reference by another entity,
+you can pass the `cascade_delete` parameter. To specify what odd to happen in
+case the given entity is deleted
+
+```py
+  class Person(db.Entity):
+      name = Required(str)
+      passport = Optional("Passport", cascade_delete=True)
+
+  class Passport(db.Entity):
+      number = Required(str)
+      person = Required("Person")
+```
+
 ### Define extra options for specific datatypes
 
 ### Define methods and properties
