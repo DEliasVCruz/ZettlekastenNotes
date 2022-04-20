@@ -41,12 +41,35 @@ To delete an existing branch
   git branch -D <branchname> [or multiple branches]
 ```
 
+### Move to a different branch
+
+You can move between branches with the [checkout](./it3j.md) command
+
+```sh
+  git checkout <branchname>
+```
+
+### List branches
+
+You can either:
+
+- List local branches only
+- List remote branches only
+- List all branches (remote and local)
+
+```sh
+  git branch -l     # List local branches
+  git branch -r     # List remote branches
+  git branch -a     # List all branches
+```
+
 ### Point branch to a new commit (movin branches around)
 
 Once you create a new branch it will **point to your current head** to make it
-**point to a different commit** you first have to [checkout the branch](./it3j.md):
+**point to a different commit**:
 
-And **while on that branch** you [reset](./z9bi.md) the branch to a **new commit**
+1. First `checkout` the branch
+2. **While on that branch**, [reset](./z9bi.md) the branch to a **new commit**
 
 ```sh
   git checkout <branchname>
@@ -86,6 +109,9 @@ remote to delete it uppstream
 
 ### Rename a local branch
 
+You can use the `-m` option to give a local branch a new name, this **will not
+make** any **changes to remote versions** of the branches
+
 ```sh
   git branch <branchname> -m <newname>
 ```
@@ -118,4 +144,11 @@ need to **create a local branch** that tracks them
   git checkout <remote-name>/<branch>
   git checkout -b <branch>
   git remote -u <remote-name>/<branch> <branch>
+```
+
+A **faster way** can be achived with the `checkout` command
+
+```sh
+  git fetch --all
+  git checkout -b <branch> <remote-name>/<branch>
 ```

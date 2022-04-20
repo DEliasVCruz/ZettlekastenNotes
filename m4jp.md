@@ -17,13 +17,14 @@ The `.tgz` format is a **compressed** version of the archive file through
 
 ## Options
 
-- -c: create new archive
-- -v: verbose
-- -f: specify filename
-- -x: extract file
-- -z: file archve through gzip
+- `-c`: create new archive
+- `-C`: Specify a directory for extraction
+- `-v`: verbose
+- `-f`: specify filename
+- `-x`: extract file
+- `-z`: file archve through gzip
 
-## How to
+## Cookbook
 
 ### Create tar/tgz
 
@@ -35,4 +36,13 @@ The `.tgz` format is a **compressed** version of the archive file through
 
 ```sh
   tar -xvf unziped.tar
+```
+
+### Extract the contents into a target directory
+
+You can untar the contents of a file into a different directory than the 
+one you are currently on with the `-C` option
+
+```sh
+  tar -xvf tar_file.tar[.gz] -C /path/to/dir
 ```

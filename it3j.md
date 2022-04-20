@@ -15,9 +15,9 @@ You would use this command when you want to **switch** to a **different**
 
 ## Options
 
-- --detach: Move to the last commit of a branch
-- -b: Create a new branch and move to it
-- --conflict: Discard a conflicting file without discarding the whole merge process
+- `--detach`: Move to the last commit of a branch
+- `-b`: Create a new branch and move to it
+- `--conflict`: Discard a conflicting file without discarding the whole merge process
 
 ## Cookbook
 
@@ -35,12 +35,6 @@ You can move back an specified **\#n** number of times with:
 
 ```sh
   git checkout HEAD~<n>
-```
-
-### Move to a different branch
-
-```sh
-  git checkout <branchname>
 ```
 
 ### Move to the last commit of a branch
@@ -62,4 +56,23 @@ commit associated to that branch
 
 ```sh
   git checkout [<commitid>] <[deleted]file>
+```
+
+### Create and move the new branch
+
+You can use the `-b` option to both switch to another and create it if it does
+not yet exit
+
+```sh
+  git chekcout -b <new-branch-name>
+```
+
+### Create and move to a local version of a remote branch
+
+You can also use the `-b` option to create a local version of a remote branch
+and move to it
+
+```sh
+  git fetch --all
+  git checkout -b <local-branch-name> <remote-branch-name>
 ```
