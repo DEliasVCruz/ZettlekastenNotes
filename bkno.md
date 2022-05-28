@@ -107,15 +107,26 @@ You can specify various columns as one single column that will be of `datetime` 
 
 You will also **need** the [openpyxl](./whkz.md) library **installed**:
 
-- Some **usefull parameters** are:
+- Some **useful parameters** are:
 
+  - `header`: The `zero-index` row that is going to be used as the header
   - `sheet_name`: The name or 0 based index of the sheet to read from
   - `parse_dates=[<column-name>]`: Specify the values of column are dates
     - It also uses 0 based index, 0 being the index column
   - `usecols=[<list-of-cols]`: The columns you want to use
+    - It accepts excel ranges like `'C:E'` to indicate columns C to E
+    - It can also accept column names: `['price', 'quantity']`
+    - It can also accept the `zero-index` column numbers: `[0, 2, 4, 5]`
+    - It can also take a callable function
 
 ```py
-  df_csv = pd.read_excel("<excel_file.xlsx>"[,index_col=0, usecols=[0, 1, 2]])
+  df_csv = pd.read_excel("<excel_file.xlsx>", index_col=0, usecols=[0, 1, 2])
+
+# Using a calable lambda
+
+  cols_to_use = ['item_type', 'order id', 'order date', 'state', 'priority']
+  df = pd.read_excel(src_file, header=1,
+                     usecols=lambda x: x.lower() in cols_to_use)
 ```
 
 ### Create a dataframe from a sql query
