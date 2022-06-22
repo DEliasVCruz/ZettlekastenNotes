@@ -10,7 +10,9 @@ Built-in module to generate pseudo-random elements
 
 ## Overview
 
-You can use this module to generate random numbers in various ways
+You can use this module to generate random numbers in various ways, though is
+not **true randmoness** for **criptograpich** needs you should use the
+**built-in** [secrets](./6vbi.md) module instead
 
 ## Cookbook
 
