@@ -4,10 +4,11 @@ Tar allow us to archive files into the `.tar` or `.tgz` format.
 
 ## Overview
 
-This **only works with tar** files, check [zip](./kg1a.md) for zip files.
+The `tar` command takes multiple files and combines them into a single file
+which is known as a **tarball**
 
-The `.tgz` format is a **compressed** version of the archive file through
-**gzip**
+- This **only works with tar** files, check [zip](./kg1a.md) for zip files.
+- The `.tgz` format is a **compressed** version of the archive file through [gzip](./ic6w.md)
 
 ## Synopsis
 
@@ -22,7 +23,7 @@ The `.tgz` format is a **compressed** version of the archive file through
 - `-v`: verbose
 - `-f`: specify filename
 - `-x`: extract file
-- `-z`: file archve through gzip
+- `-z`: compress the tarball with gzip
 
 ## Cookbook
 
@@ -32,7 +33,7 @@ The `.tgz` format is a **compressed** version of the archive file through
   tar -czvf archive.tgz source_file
 ```
 
-### Open or unzip or untar a tar/tgz
+### Open or untar a tar/tgz
 
 ```sh
   tar -xvf unziped.tar
@@ -40,7 +41,7 @@ The `.tgz` format is a **compressed** version of the archive file through
 
 ### Extract the contents into a target directory
 
-You can untar the contents of a file into a different directory than the 
+You can untar the contents of a file into a different directory than the
 one you are currently on with the `-C` option
 
 ```sh

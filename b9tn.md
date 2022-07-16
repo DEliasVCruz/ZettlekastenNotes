@@ -9,11 +9,12 @@ It let's you build and execute commnand lines form standard input, it is
 as a parameter.
 
 It reades **items** from standard input as **separated by blanks** and
-**executes** a **command on each argument**.
+**executes** a **command taking as an input each line**.
 
-It is mostly used to operate on the output of another command like `find`
-
-**Blank lines** on the standard input **are ignored**
+- It is mostly used to operate on the output of another command like `find`
+- **Blank lines** on the standard input **are ignored**
+- It can be use to run the same command multiple times with different parameters
+  each time
 
 ## Synopsis
 
