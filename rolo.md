@@ -15,6 +15,7 @@ Perform SQL operations on tables with the TABLE keyword
 ### Commands
 
 - `CREATE TABLE`: Start a **new table** and **define** it's **structure**
+  - `CREATE TEMP TABLE`: Create a temporary table
 - `INSERT INTO`: **Specify** what **columns** you are going to **enter values to**
 - `ALTER TABLE`: **Make modifications** to you table after defining it
 - `DELETE FROM`: **Delete records** from a table
@@ -90,10 +91,12 @@ perform additional** [sorting](./lhgd.md) on your resulting table
 
 ### Delete a table
 
-You can use the `DROP` command to delete a table
+You can use the `DROP` command to delete a table. You can also add
+a condition on the drop statement
 
 ```sql
   DROP TABLE <table-name>;
+  DROP TABLE IF EXISTS <table-name>;
 ```
 
 ### Change the schema of a table after creating it
@@ -132,7 +135,7 @@ Inside the `VALUES` command:
       <int-type-column>
       <date-type-columns>
   )
-  VALUES ('<Value-1>', <Value-2>, DATE '<date-format>');
+  VALUES ('<String-Value>', <Int-Value>, DATE '<date-format>');
 ```
 
 ### Insert records from another table
@@ -219,3 +222,35 @@ along (meaning you only want the structure)
   CREATE TABLE copy_table
   AS TABLE my_table;
 ```
+
+### Create a temporary table
+
+You can create a temporary table in PostgreSQL with the `TEMP` or `TEMPORAL`
+keyword in the middle of how you would create a normal table
+
+Temporal tables are not saved on the database and are stored for the duration
+of the session or transaction. They are utomatically droped at the end of a
+session or a transaction
+
+- Usefull for table extracts where we will perform further operations
+- It's visible only to the session that creates it
+- It's not a query but a short-lived physical table
+- It can be used again in a different query within the same sesion or transaction
+
+```sql
+  CREATE TEMP TABLE <table-name>(
+    <table-creation-statement>
+  );
+```
+
+### Create Common Table Expression (CTE)
+
+A CTE is an in memory pseudo-table based on a sub-query it can be used to alias
+a query that will be used multiple times inside the same query so that you don't
+have to run it multiple times it will live on memory through the duration of a
+the query
+
+As such a CTE is not really a table nor just an alias but a query extracted
+itno an in memory table structure for use only within the defined query
+
+To see an example check [select](./c76a.md) statement
