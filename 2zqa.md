@@ -80,3 +80,13 @@ The **length in characters** of the value of `parameter` is substituted. If
 ```bash
   ${#parameter}
 ```
+
+### Expand to the last executed command in history
+
+You can use the `!!` expansion as an alias to the last executed command in
+your shell history
+
+```sh
+  pacman -Syu app   # This returns an error
+  sudo !!           # This works
+```

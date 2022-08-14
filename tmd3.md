@@ -49,7 +49,7 @@ Some characters are evaluated to have **non-literal**
 
 ## Cookbook
 
-### Make an conditional statement without if and else
+### Make a conditional statement without if and else
 
 You can use the `&&` and `||` as `if` and `else` operators **respectively**
 

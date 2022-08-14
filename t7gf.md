@@ -23,6 +23,7 @@ a custom** error message
 
 - `FileNotFoundError`: when a file or directory is requested but doesn’t exist.
 - `OSError`: In a system function related error (see [os](./ik75.md) module)
+- `BadZipfile`: custom error for invalid zipfiles from the [zipfile](./9lfj.md) module
 
 ### Operations related errors
 

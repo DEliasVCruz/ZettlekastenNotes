@@ -250,4 +250,5 @@ You can use the `mkdir()` method to create a directory from a `Path` object
 
 ```py
   path = pathlib.Path.cwd() / "new_dir"
+  path.mkdir()
 ```

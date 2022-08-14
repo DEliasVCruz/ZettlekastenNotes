@@ -80,7 +80,7 @@ Bash is **not a typed language** but variables can be **defined** with
 Here is a summary of most of the _Special Parameters_:
 
 - `"$0"`: Contains the name, or the path, of the script
-- `"$1"`: Contain the arguments that were passed
+- `"$1"`: Contain the argument that was passed first
 - `"$@"`: Expands to all the words of all the positional parameters
 - `$#`: Expands to the number of positional parameters
 - `$?`: Expands to the **exit code** of the most recent completed command
@@ -133,7 +133,12 @@ This way the following is similar to `rm "My song.mp3"`
 ## Use passed arguments in your function or script
 
 To **reference** the **arguments** provided by the user inside your function or
-script you can use the **special positional parameters**
+script you can use the **special positional parameters** which are defined with
+a `$` followed by the **1-indexed** position of the argument
+
+```sh
+  main $1   # Use the first positional parameter
+```
 
 ## Call a function with all the positional parameters
 
