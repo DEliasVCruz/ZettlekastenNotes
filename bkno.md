@@ -120,7 +120,7 @@ You will also **need** the [openpyxl](./whkz.md) library **installed**:
     - It can also take a callable function
 
 ```py
-  df_csv = pd.read_excel("<excel_file.xlsx>", index_col=0, usecols=[0, 1, 2])
+  df_excel = pd.read_excel("<excel_file.xlsx>", index_col=0, usecols=[0, 1, 2])
 
 # Using a calable lambda
 

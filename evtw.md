@@ -70,6 +70,28 @@ This process is also referred to as `deserialization` or `decoding`
   data = json.loads(json_str)                       # Load from a json as string
 ```
 
+### Parse json data
+
+Once you've loaded a json object, be it by loding it from a file or
+a string. You can then access it's contentens as a nested set of
+dictionaries and lists
+
+```py
+  json_str = """
+  {
+      'Person': {
+          'Name': 'Daniel',
+          'Age': 23,
+          'Programs': ['Python', 'SQL', 'VBA']
+        }
+    }
+  """"
+
+  data = json.loads(json_str)
+  data["Person"]["Name"]                            # Daniel
+  data["Person"]["Programs"][0]                     # Python
+```
+
 ### Create a custom encoder function
 
 If you got a complex object that you want to serialize, by **default** the
