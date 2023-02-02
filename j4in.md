@@ -143,7 +143,7 @@ need to **create a local branch** that tracks them
 ```sh
   git checkout <remote-name>/<branch>
   git checkout -b <branch>
-  git remote -u <remote-name>/<branch> <branch>
+  git branch -u <remote-name>/<branch> <branch>
 ```
 
 A **faster way** can be achived with the `checkout` command

@@ -157,7 +157,9 @@ If you have an expression like `.*` it will do the matching greedily if you wan
 to avoid this you can append a `?` to it
 
 ```regex
-  he.*?\s
+  I want <to serve humans> for diner>
+  <.*?>       <to serve humans>
+  <.*>        <to serve humans> for diner>  
 ```
 
 ### Match any number of lowercase letters in a row

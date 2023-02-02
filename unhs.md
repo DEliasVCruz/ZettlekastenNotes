@@ -74,6 +74,13 @@ A **single entity can handle different version of an object accordingly**. So a
 parent class method can handle instances of it's child method according to that
 subclass characteristics
 
+### Singletons
+
+A singleton is a class with only one instance. There are some examples of
+singletones in `Python` such as `None`, `True` and `False` this is what
+allows you to compare against them with the `is` keyword since it returns
+`True` for objects that are the exact same instance
+
 ## Cookbook
 
 ### Define a class instance attributes
@@ -295,6 +302,45 @@ function
   manager_1 = Manager("Juan", "Gambino", 2000, [employee_1, employee_2])
 ```
 
+### Create a singleton class
+
+You can create a singleton class by storing the first instance of
+the class as an attribute. Later attempts at creating an instance
+simply return the stored instance
+
+- In this case we are going to do it using a [decorator](./ff01.md) that wraps
+  and turns a class into a singleton class
+
+```py
+  import functools
+
+  def singleton(cls):
+      """Make a class a Singleton class (only one instance)"""
+      @functools.wraps(cls)
+      def wrapper_singleton(*args, **kwargs):
+          if not wrapper_singleton.instance:
+              wrapper_singleton.instance = cls(*args, **kwargs)
+          return wrapper_singleton.instance
+      wrapper_singleton.instance = None
+      return wrapper_singleton
+
+  @singleton
+  class TheOne:
+      pass
+
+  first_one = TheOne()
+  another_one = TheOne()
+
+  id(first_one)             # 140094218762280
+  id(another_one)           # 140094218762280
+
+  first_one is another_one  # True
+```
+
+> NOTE: Singleton classes are not really used as often in Python as
+> in other languages. The effect of a singleton is usually better
+> implemented as a global variable in a module.
+
 ### Find all the attributes that belong to an specific object
 
 You can use a special **magic attribute** `__dict__` to display all the
@@ -323,7 +369,7 @@ is of** a certain **type**
 
 - This in **OOP** terms is defined as **encapsulation**:
 
-**Attributes** for which ony got **one opportunity** for **setting** their
+**Attributes** for which only got **one opportunity** for **setting** their
 **value** and then we can't change the value anymore. This is usefull if we
 don't want our users to mess with the values of the class instance after it has
 been instantiated
