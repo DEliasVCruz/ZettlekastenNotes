@@ -40,7 +40,7 @@ So when **adding** an `int` and a `float` the result will be a float
 
 ### Format a number
 
-You can **specify formatting options** for you number inside an `f string` by
+You can **specify formatting options** for you number inside an [f string](./4t3v.md) by
 applying them after the `:` modifier
 
 - `,`: Separate thousands with a ','

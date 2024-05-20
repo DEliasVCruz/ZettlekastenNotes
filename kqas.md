@@ -63,9 +63,9 @@ a given function
             return True
       return False
 
-even_numbers = list(filter(check_even, numbers))
+  even_numbers = list(filter(check_even, numbers))
 
-print(even_numbers)     # [2, 4, 6, 8, 10]
+  print(even_numbers)     # [2, 4, 6, 8, 10]
 ```
 
 - You can also use a lambda function for a quick filter

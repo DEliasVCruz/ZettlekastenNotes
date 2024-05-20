@@ -15,6 +15,7 @@ initiating the rebase action
 - fixup: Merge commits but remove the original commit message
 - reword: Use the commit but modified it's message
 - --continue: Continue with rebase process after fixing conflicts
+- --onto: Merge only part of a branch to another branch
 
 ## Synopsis
 
@@ -107,4 +108,15 @@ You may want to rebase your work on top of an upstream branch `<origin/name>`.
   git checkout [<remote-name>]
   git rebase [<remote-name>]/master
   git push --force origin feature
+```
+
+### Rebase only some commits from one branch into another
+
+You can rebase only part of a branch with the `--onto` flag
+
+- If you need only replay the last three commits only from 
+  your current branch, in this case work:
+
+```sh
+    git rebase --onto <target-branhc> HEAD~3
 ```

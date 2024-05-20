@@ -18,6 +18,7 @@ specified.
 - `-l`: Print the **lines** count
 - `-w`: Print the **word** count
 - `-m`: Print the **character** count (including special characters)
+- `-c`: Print the byte counts
 
 ## Cookbook
 
@@ -30,5 +31,13 @@ specified.
 ### Print the character length of string
 
 ```sh
-  echo "Hello"  # 6
+  echo "Hello" | wc -m
+  ... 5
+```
+
+### Print the number of bites of a file
+
+```sh
+  wc -c my_file
+  ... 19366 my_file
 ```
