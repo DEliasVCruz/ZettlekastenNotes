@@ -1,4 +1,4 @@
-# lang.bash.oper.conditional
+# lang.bash.syntax.conditional
 
 Conditional statements structure and particularities in bash
 

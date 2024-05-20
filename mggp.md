@@ -1,4 +1,4 @@
-# lang.py.oper.classes.built_functions
+# lang.py.syntax.classes.built_functions
 
 There are some built in functions to operate on classes and their attributes
 

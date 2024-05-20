@@ -1,4 +1,4 @@
-# lang.py.oper.comprehension
+# lang.py.syntax.comprehension
 
 Embed loop logic to create data structures at their definition
 

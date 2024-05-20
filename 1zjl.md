@@ -1,4 +1,4 @@
-# lang.py.oper.function.arguments
+# lang.py.syntax.function.arguments
 
 You can define arguments of a function in various ways
 

@@ -1,4 +1,4 @@
-# lang.bash.oper.loops
+# lang.bash.syntax.loops
 
 Conditional loops for repeated operations
 

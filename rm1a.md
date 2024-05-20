@@ -1,4 +1,4 @@
-# lang.py.oper.classes.dataclass
+# lang.py.syntax.classes.dataclass
 
 Simplify classes definition by automating common requirements
 

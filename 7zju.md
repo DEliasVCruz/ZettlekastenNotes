@@ -1,4 +1,4 @@
-# lang.py.oper.variable
+# lang.py.syntax.variable
 
 Create reference to Python data structures or objects
 

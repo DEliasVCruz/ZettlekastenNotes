@@ -1,4 +1,4 @@
-# lang.py.oper.exception
+# lang.py.syntax.exception
 
 A control flow for error handling
 

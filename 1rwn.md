@@ -1,4 +1,4 @@
-# lang.py.oper.context_manager
+# lang.py.syntax.context_manager
 
 Ensure the correct management of resources handling access and closing
 

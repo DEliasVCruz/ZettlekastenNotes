@@ -1,4 +1,4 @@
-# lang.bash.oper.functions
+# lang.bash.syntax.functions
 
 Basic function syntax and use cases
 

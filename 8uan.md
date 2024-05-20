@@ -1,4 +1,4 @@
-# lang.py.oper.function.lambda
+# lang.py.syntax.function.lambda
 
 Anonymous, single use or just throw away functions
 

@@ -1,4 +1,4 @@
-# lang.py.oper.print
+# lang.py.syntax.print
 
 Print messages to stdout
 

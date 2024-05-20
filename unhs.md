@@ -1,4 +1,4 @@
-# lang.py.oper.classes
+# lang.py.syntax.classes
 
 An object creation and instantiating structure
 

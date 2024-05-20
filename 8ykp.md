@@ -1,4 +1,4 @@
-# lang.py.oper.sorting
+# lang.py.syntax.sorting
 
 Perform sorting of the data contained in diferent types
 

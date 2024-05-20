@@ -1,4 +1,4 @@
-# lang.bash.oper.expansion
+# lang.bash.syntax.expansion
 
 Parameter expansion is the substitution of a parameter by its value
 

@@ -1,4 +1,4 @@
-# lang.py.oper.loggin
+# lang.py.syntax.loggin
 
 Python's native log keeping capabilities with the standard logging library
 

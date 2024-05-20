@@ -1,4 +1,4 @@
-# lang.py.oper.function
+# lang.py.syntax.function
 
 Your standard function definition but in Python
 

@@ -1,4 +1,4 @@
-# lang.py.oper.function.map_filter_reduce
+# lang.py.syntax.function.map_filter_reduce
 
 There are verious builtin functions for functional programming
 
