@@ -26,6 +26,7 @@ files and directories specified in a `.gitignore` file
 ### Options
 
 - `-t`: Search only on specified file types
+- `-c`: Only show count of matching lines for each file
 - `-uu`: **Search** through **all files**
 - `-g`: Search through **files that match a glob**
 - `--files-with-matches`: Only output the file names of the matches
@@ -89,4 +90,26 @@ avoid this sourround the first letter of your pattern with `[]`
 
 ```sh
   ps aux | rg '[s]t$'
+```
+
+### Get the count of matching lines for a file
+
+You can use the `-c` flag to only get the count of matching lines 
+of a file or group of files
+
+```sh
+  rg -c "my_func" functions/.*/main
+```
+
+This is preferable over using the [word count](./pcsj.md) for each output,
+which for many outputs would require a [loop](./2jou.md) even to perform
+correctly
+
+```sh
+  for f in functions/.*/main; do
+      # or worse, for f in `ls functions/.*/main` ...
+      echo -n "$f:"
+      # so that we know which file's results we're looking at
+      rg "my_func" "$f" | wc -l
+  done
 ```
