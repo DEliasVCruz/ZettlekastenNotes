@@ -15,12 +15,16 @@ would need without the complex permission managment
 
 ## Cookbook
 
+### Install doas in your system
+
 ### Configure doas for use
 
 You need to create and edit the file in `/etc/doas.conf`. This allows that any
 member of the `wheel` group can run `doas` to run something as a different user
 
 ```conf
+  -- /etc/doas.conf
+
   permit :wheel
 ```
 
@@ -40,6 +44,8 @@ again until after some time
 - Just add this to the `/etc/doas.conf` file
 
 ```conf
+  -- /etc/doas.conf
+
   permit persist :wheel
 ```
 
@@ -49,6 +55,8 @@ You can add different permissions with the `permit` command the **basic
 structure goes as**
 
 ```conf
+  -- /etc/doas.conf
+
   permit <permission> [<group>] [as <user>] [cmd <command> [args <command-arguments]]
 ```
 
