@@ -1,6 +1,6 @@
 # cloud.aws.lambda
 
-An `aws` service to run code on the cloud withouth having to manage servers
+An `aws` service to run code on the cloud without having to manage servers
 
 ---
 tags: @compute @serverless @aws @managed
@@ -17,15 +17,15 @@ aws
 With this you don't have to worry much about the infrastructure of your application
 but rather only focus on creating the code that will be run
 
-Aws manages everything related to:
+`AWS` manages everything related to:
   - High availability and security
-    - They run automatically acros multiple availabitily zones within a region
-    - You don't have to manage multy `AZ` deployments
-  - Automatic scalling to meed your needs
+    - They run automatically across multiple availability zones within a region
+    - You don't have to manage multi `AZ` deployments
+  - Automatic scaling to meed your needs
 
 Most importantly you only pay for what's been used (`compute`) and get no charges
 for idle instances
-  - When the code is `invoked` you are billed in **1 milisecond** increments
+  - When the code is `invoked` you are billed in **1 millisecond** increments
 
 The code that runs in your lambda is called a `lambda function`
   - You can run code in **any language** or provide a **custom runtime** to run on
@@ -36,7 +36,7 @@ The code that runs in your lambda is called a `lambda function`
 
 They run in response to events:
   - After you upload your code to lambda, you can configure an `event source`
-  - There are over **200** integrations for event sources, like:
+  - There are over **200** integration's for event sources, like:
     - `API Gateway`, `S3`, `DynamoDB`, `SQS/SNS`
   - Instead of scaling by provisioning more servers, it scales in response to the
     events
@@ -54,7 +54,7 @@ You can also **build** your functions using `container images`, you define
 your containers using the `OCI` spec (like a [docker file](./fm36.md)) that then
 you have to push to **Amazon Elastic Container Registry** (`ECR`)
 
-### The programing model of lambda functions
+### The programming model of lambda functions
 
 The lambda programming model is common to all of the runtimes, it defines the
 interface between your code and the lambda service
@@ -68,7 +68,7 @@ which you can use to:
 
 Then it handles the event that trigger the lambda through the `handler`, this
 receives **2 objects** as parameters:
-  - `event`: Contains all the data and metadata the lambda nees to run, depending
+  - `event`: Contains all the data and metadata the lambda needs to run, depending
     on which source created it
 
     For example, an event created by `api gateway` contains details related to the
@@ -78,17 +78,17 @@ receives **2 objects** as parameters:
     the bucket name and the new object
 
     It can then use this to handle the request, like access the path of the `s3`
-    new object to donwload it
+    new object to download it
 
   - `context`: This allows to interact with the lambda execution environments and
     contains a number of properties and methods
 
     You can get information like the `name` and `version` of the function or
-    things like `request id` to track especific invokatons, the amount of time
-    in miliseconds remaining before a function time outs, `logs`, etc.
+    things like `request id` to track specific invocations, the amount of time
+    in milliseconds remaining before a function time outs, `logs`, etc.
   
 
-Subsequent invokations of a lambda that has already been initialized will not
+Subsequent invocations of a lambda that has already been initialized will not
 run the initialization code again and will only run the code inside the
 `handler` function
 
@@ -139,9 +139,9 @@ def add_bacon(data):
 
 You should first [create an iam execution role](./8o8o.md) to be `assumed` by the 
 lambda when executing, so that it have permission to access `aws resources`,
-you can do this with the `aim creat-role` comand
+you can do this with the `aim creat-role` command
 
-- In this example we use an inline trust policiy
+- In this example we use an inline trust policy
 
 ```sh
 aws iam create-role \
@@ -157,8 +157,8 @@ aws iam create-role \
     }'
 ```
 
-Then you have to [zip](./kg1a.md) the lambda code along all it's dependecies, you have
-to use your langugage of choice native package manager
+Then you have to [zip](./kg1a.md) the lambda code along all it's dependencies, you have
+to use your languages of choice native package manager
 
 For supported language runtimes, you only have to package the external
 dependencies as all standard runtime dependencies are already installed
@@ -178,10 +178,10 @@ aws lambda create-function
   --role arn:aws:iam:9783923742:role/my-new-role
 ```
 
-Finally we can invoke our function and view it's response and logs with the
+Then we can invoke our function and view it's response and logs with the
 `invoke function` sub-command of the `lambda` command
 
-- In this case we decode the logs as `base64` encoded text
+- In this case we decode the logs as [base64](./nlre.md) encoded text
 
 ```sh
 aws lambda invoke \
@@ -190,3 +190,21 @@ aws lambda invoke \
   --query 'LogResult' \
   --output text | base64 -d
 ```
+
+If you want to update the configuration of an exiting function you can use the
+`update-function-configuration` command to set it's values
+
+- For example in this case we increase the memory of a lambda to `256` megabytes
+
+```sh
+aws lambda update-function-configuration \
+  --function-name my-new-function \
+  --memory-size 256
+```
+
+Lastly, we can delete our recently created lambda function with the `delete-function`
+sub-command
+
+```sh
+aws lambda delete-function --function-name my-new-function
+``` 
