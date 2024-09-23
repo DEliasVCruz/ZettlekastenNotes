@@ -135,7 +135,7 @@ def add_bacon(data):
 
 ### Create and build a lambda function from the console
 
-### Deploying a (zip) lambda using the aws cli
+### Deploying a zip lambda using the aws cli
 
 You should first [create an iam execution role](./8o8o.md) to be `assumed` by the 
 lambda when executing, so that it have permission to access `aws resources`,
@@ -208,3 +208,98 @@ sub-command
 ```sh
 aws lambda delete-function --function-name my-new-function
 ``` 
+
+### Deploying a container image as a lambda function
+
+This enables you to pair the flexibility of containerinaztion with the operation
+simplicity of lambdas, this hase some benefits:
+  - You get to use your familiar container tooling
+  - Dependency managment works by creating an inmutable container with all your
+    wrapped dependencies
+  - You can use your prefere based linux image (not only amazon linux)
+  - Since container images are inmutable, you can feel confident that your
+    functions are consistent amongst any enviroment you deploy to
+    - With this comes more responsability, since `aws` can't perform automatic `os`
+      and `runtime` updates and patching
+    - Any change to the image requires a seperate re-deployment step
+  - The deployment lambda can handle know up to `10G` for the container image
+    - We optimize and cach the loading of the images to reduce cold starts
+  - Your code now is more portable to use in multiple enviroments and `aws` services
+
+You build your images and push them to the Amazon Elastic Container Registry (`ECR`)
+which is a fully managed container registry
+
+`AWS` lambda provides a variety of curated based images for each runtime, which
+includes the code to make it work with lambda
+
+In this example:
+  - We use a node js base image
+  - Copy the function code
+  - Install dependecies
+  - Set the handler method
+
+```dockerfile
+FROM public.ecr.aws/lambda/nodejs:18
+COPY app.js package*.json ./
+RUN npm install
+CMD ["app.lambdaHandler"]
+```
+
+Having this base `docker file` we first start by building it
+
+```sh
+docker build -t my-docker-lambda:latest .
+```
+
+You can then use `docker run` to run the container locally to test the 
+functionality, this runs a **local lambda emulator** which is included
+as part of the lambda base image
+
+```sh
+docker run -p 9000:8080 my-docker-lambda:latest
+```
+
+We can then [curl](./frnd.md) this local endpoint to invoke the function and
+see the hello world
+
+```sh
+curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{}'
+```
+
+Then, you have to upload the image to `ECR`, so use `docker tag` to set the image
+information and then `docker push` to push the image to the registry
+
+```sh
+docker tag \
+  my-docker-lambda \
+  97848024274.dkr.ecr.us-east-1.amazonaws.com/my-docker-lambda:latest
+
+docker push \
+  97848024274.dkr.ecr.us-east-1.amazonaws.com/my-docker-lambda:latest
+```
+
+Finally, you can use the `create-function` comand from the `cli` to create a new
+lambda function based on your recently pushed image, especifying the package type
+as `Image` and pointed to the `ECR` image
+
+```sh
+aws lambda create-function \
+  --region us-east-1 \
+  --function-name my-docker-lambda \
+  --package-type Image \
+  --code ImageUri=97848024274.dkr.ecr.us-east-1.amazonaws.com/my-docker-lambda:latest \
+  --role arn:aws:iam:9783923742:role/my-new-role
+```
+
+Now we can test it by invoking the function in the cloud and see the result
+
+```sh
+aws lambda invoke --function-name my-docker-lambda --region us-east-1 result.json
+# {
+#   "StatusCode": 200,
+#   "ExecutedVersion": "$LATEST"
+# }
+
+cat ./result.json
+# {"statusCode": 200, "body": "{\"message\": \"hello world\"}"}
+```

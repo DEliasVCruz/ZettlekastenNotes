@@ -20,9 +20,13 @@ aws lambda [sub-comands] [options]
   - `--handler`: The name for the entry point function handler
   - `--runtime`: The language runtime on which the function will run
   - `--role`: The `ARN` of the role to be assigned to the lambda
+  - `--region`: Set an especific region on which to create the lambda
+  - `--package-type`: Specfify the way the function is packgae, default is `Zip`
+  - `--code`: The container registry where the container image can be found
 
 - `invoke`: Calls for the execution of an `aws` lambda function
   - `--function-name`: The `aws` name of the function to be called
+  - `--region`: Invoke a lambda from an especific region, the default is `us-east-1`
   - `--log-type`: ?
   - `--query`: ?
   - `--output`: In what format to output the response
@@ -48,6 +52,24 @@ aws lambda create-function
   --zip-file ./function.zip \
   --handler index.handler \
   --runtime nodejs18.x \
+  --role arn:aws:iam:9783923742:role/my-new-role
+```
+
+### Create a function based on an image container
+
+You can use the `create-function` comand from the `cli` to create a new
+lambda function based on your recently pushed container image, especifying the 
+package type as `Image` and pointed to the `ECR` image
+
+- You need to have a [lambda image already built](./9vvw.md) 
+- Have that imaged pushed to `ECR`
+
+```sh
+aws lambda create-function \
+  --region us-east-1 \
+  --function-name my-docker-lambda \
+  --package-type Image \
+  --code ImageUri=97848024274.dkr.ecr.us-east-1.amazonaws.com/my-docker-lambda:latest \
   --role arn:aws:iam:9783923742:role/my-new-role
 ```
 
@@ -90,3 +112,13 @@ need to pass it the `aws` lambda name
 ```sh
 aws lambda delete-function --function-name my-new-function
 ``` 
+
+### Create a function on an especfific region
+
+You can use the `region` option to create a lambda on an especific region
+
+```sh
+aws lambda create-function 
+  --function-name my-new-function \
+  --region us-east-1
+```
