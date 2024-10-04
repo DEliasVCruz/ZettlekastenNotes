@@ -45,30 +45,37 @@ commit but **don't update working directory**
 Using the `--soft` flag will keep the **changes as staged**
 
 ```sh
-  git checkout <branchname>
-  git reset <commitid>
+  git checkout <branchname> # Move to the branch you want to reset
+  git reset <commitid> # Make the branch point to a different commit
 ```
 
 This is **recommended when working with local repos** if you want to **revert
 commit** that you have **already pushed** to a remote branch **your best option
 is** [revert](./36re.md)
 
-### Unstage files
+### Unstaging a file
 
-To unstage specific files:
+Although you can use `reset` to remove a file from the staging area
+it is not recommended since it can have unintended consequences
 
-```sh
-  git reset [<commitid>|<branchname>] <files>
-```
-
-To **unstage all files**:
+It's better to use the [restore](./8m7k.md) command for this operation
 
 ```sh
-  git reset HEAD^
+git restore --staged <file-to-unstage>
 ```
 
 ### Restore a file to it's original or previous version
 
 For this you may want to use [checkout](./it3j.md) to bring back a version of
-the file from a previous commit or [restore](./8m7k.md) to remove unstage
-changes from the index
+the file from a previous commit 
+
+```sh
+  git checkout [<commitid>] <[deleted]file>
+```
+
+Or [restore](./8m7k.md) to remove unstage changes from the index
+
+```sh
+  git restore <file>
+```
+

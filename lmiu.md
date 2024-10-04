@@ -11,7 +11,7 @@ Get a list of all the previous run commands in the shell history
 ## Overview
 
 This command prints the shell command history, that is every line
-that has been run through the commandline
+that has been run through the comandline
 
 ## Cookbook
 

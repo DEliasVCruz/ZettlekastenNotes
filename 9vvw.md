@@ -1,10 +1,11 @@
+---
+aliases: ["Aws lambda basics", "How to create and manage lambdas in aws cloud"]
+tags:  ["compute", "serverless", "aws", "managed"]
+---
+
 # cloud.aws.lambda
 
 An `aws` service to run code on the cloud without having to manage servers
-
----
-tags: @compute @serverless @aws @managed
----
 
 ## Synopsis
 

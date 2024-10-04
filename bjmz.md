@@ -1,3 +1,7 @@
+---
+tags: ["editing", "comandline", "lines", "replace", "character"]
+---
+
 # cli.tr
 
 Replace or delete characters
@@ -22,4 +26,13 @@ separated** string
 
 ```bash
   echo fiel_with_new_lines.txt | tr "\n" " "
+```
+
+### Replace spaces for new line
+
+If you wanted to make all **new line** separated strings into one **space
+separated** string
+
+```bash
+  echo fiel_with_new_lines.txt | tr " " "\n"
 ```
