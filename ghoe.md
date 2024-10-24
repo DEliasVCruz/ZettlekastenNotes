@@ -1,4 +1,4 @@
-# lang.go.pointers
+# lang.go.syntax.pointers
 
 What are pointers, how are they use and how they work in golan
 
