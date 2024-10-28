@@ -160,3 +160,47 @@ index use the `ignore_index=True` parameter
 ```py
   reindexed = pd.concat([precip_one_station, precip_one_station], ignore_index=True)
 ```
+
+### Do a v-lookup styled operation
+
+It's common when working with `excel` to do `v-lookup` (buscarv) operations
+between different sets of data
+
+For example you have a big table with some ids, and then you have some other
+table with possibly matching id's and their own set of values
+
+You may want to get some of the columns of that other table into your
+big table but matching their respective row index by id
+
+You can use the `merge` method to accomplish this sort of functionality
+
+```py
+import pandas as pd
+
+df = pd.read_csv('data1.csv', index_col='id')
+print(df)
+
+# Output
+id   size qty
+3237   xl   7
+3859   xl  61
+3518   sm  83
+
+refs = pd.read_csv('refs.csv', index_col='id')
+print(refs)
+
+# Output
+id   reference
+3859   Y328sdf
+3518   Y234mds
+3237   Y983msr
+
+merged = df.merge(refs, how='left', on='id')
+print(merged)
+
+# Output
+id   size qty reference
+3237   xl   7   Y983msr
+3859   xl  61   Y328sdf
+3518   sm  83   Y234mds
+```

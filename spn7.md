@@ -60,9 +60,9 @@ only aggregate numeric values**
   import pandas as pd
 
   df_sales = pd.read_excel('sales.xlsx')
-  df_sales.pivot_table(index='Gender',
-                       columns='Product line',
-                       values='Total',
+  df_sales.pivot_table(index=['Gender'],
+                       columns=['Product line'],
+                       values=['Total'],
                        aggfunc='sum')
 
 # Output
@@ -71,7 +71,10 @@ only aggregate numeric values**
 # each gender spent on each product line
 ```
 
-You can also create a **pivot table with only rows and aggregated values**
+### Create a pivot table with only rows and aggregated values
+
+You can also not specify the columns and just have a pivot table
+of values
 
 ```py
   import pandas as pd
@@ -79,3 +82,42 @@ You can also create a **pivot table with only rows and aggregated values**
   df_sales = pd.read_excel('sales.xlsx')
   df_sales.pivot_table(index='Gender', values=['Quantity', 'Total'], aggfunc='sum')
 ```
+
+### Create a pivot table with multiple subindex
+
+It's also common to have some sort of partition of the agregation
+level when you do a pvit table
+
+For example when you want to know the total quantitiy of sizes
+by country
+
+> You can also pass a normal function to the `aggFunc` like for
+> example numpy function
+
+```py
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv('data.csv', index_col='id')
+
+pivot = pd.pivot_table(df, index=['country', 'size'], value=['qty'], aggFunc=np.sum)
+
+print(pivot)
+
+# Output:
+                  qty
+country     size
+Australia   2xl     6
+            3xl     5
+            L       5
+            M      11
+.
+.
+France      2xl   331
+            3xl   272
+....
+```
+
+## Sources
+
+- A [video](https://www.youtube.com/watch?v=CnCBbiLw-HU) on how to use pandas pivots as you would do in excel

@@ -17,6 +17,9 @@ need to use the `dt` [accessor](./4sli.md). This will give you some special
 This operations also work directly on a `datetime` [index](./271q.md) objects
 without the need of the `dt` accessor
 
+This can be much better than doing direct row or column level
+operations since it can take advantage of [vectorization](./1c2p.md) 
+
 ## Turn a datetime object into a generic time representation
 
 You can turn the elements of a `Series` that represent **datetime** objects

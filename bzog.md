@@ -15,7 +15,10 @@ Unlike [sort_values](./mfgd.md) this will perform sorting **based on** the
 
 When you perform sorting, [filtering](./m2xg.md) or drop [rows](./5t4z.md) the
 index label get messed up. You can sort based on this index numbers or labels
-with `sorti_index()`
+with `sort_index()`
+
+> **Rember**: By default the result of `sort_index` returns a copy of the
+> original dataframe after being sort, the original dataframe is unafected
 
 ## Cookbook
 
@@ -35,9 +38,9 @@ sorting
 You can **sort** your **colummns** with the `axis="columns"` argument, so that they
 will be in ascending or descending order **based on** their **label names**.
 
-- You can also use the `columns` name
+> You can also use the `columns` name or the number `1`
 
 ```py
   df.sort_index(axis="columns", ascending=False)
-  df.sort_index(axis='columns', ascending=False)    # Same result as before
+  df.sort_index(axis=1, ascending=False)    # Same result as before
 ```
