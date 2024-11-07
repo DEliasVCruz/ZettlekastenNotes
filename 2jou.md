@@ -58,6 +58,14 @@ magic methods
   done
 ```
 
+If you just want to list files to pipe into another command you can just
+use the combination of `echo` a `glob` and the [tr](./bjmz.md) command to change
+the output into individual lines
+
+```sh
+echo *.md | tr ' ' '\n' | fzf
+```
+
 ### Define a range to loop through
 
 If you want a **range to loop** your variable through,
