@@ -42,6 +42,18 @@ commit to equal the second specified commit**
   git diff <commitid> <commitid>
 ```
 
+### Get a list of only the files containing merge conflicts
+
+When wanting to see only the files that have merge conflicts
+you can use the following options:
+  - `--name-only`: Show only the file names
+  - `--diff-filter`: Filter the diff by some criteria in this case
+    - `U`: For unmerged or conflicted changes
+
+```sh
+  git diff --name-only --diff-filter=U
+```
+
 ### Check changes made from a previous commit to the lastes one
 
 ```sh
