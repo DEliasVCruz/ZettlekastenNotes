@@ -37,6 +37,16 @@ information that it had as an array
 > This is why we pass things like the length too so that we can
 > now from the function body
 
+Therefore the name of an array is a constant pointer to the first
+element of an array.
+
+This means that given an `char array[5];` (where the size of `char` is
+`1 byte`) the notations `array`, `&array[0]` and `array + 0` will
+all retunr a pointer that points to the same location
+
+Further more, given the same example, `*(array + 1)` and `array[1]`
+will give the same (dereferenced) value
+
 ## Cookbook
 
 ### Define and initialize an array in one statement
@@ -49,6 +59,29 @@ the values between `{}`
 
 ```c
 int numbers[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+```
+
+### Create a dynamic array
+
+You can create a dynamic array by using the [malloc](./mh5c.md) function
+to create a contiguous block of memory that you can traverse
+with array notation
+
+```c
+// Allocate memory to store 2 characters
+
+int n = 2;
+char *pvowels = (char *)malloc(n * sizeof(char));
+
+pvowels[0] = 'A';
+*(pvowels + 1) = 'I';
+
+printf("%c", *(pvowels));
+printf("%c", pvowels[1]);
+
+free(pvowels);
+
+printf("\n");
 ```
 
 ### Define a multidimensional array

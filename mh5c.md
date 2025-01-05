@@ -42,6 +42,19 @@ Since the `void pointer` does not have a type we need to
 person *myPerson = malloc(sizeof(person));
 ```
 
+Keep in mind that under certain circumstances `malloc` can
+return a `NULL` pointer, so it's a good pracrtice to check
+for it
+
+```
+char *buff = (char *)malloc(n * sizeof(char));j
+if (buff == NULL) {
+  return 1;
+}
+
+// continue execution
+```
+
 ## Cookbook
 
 ### Dynamically allocate a structure
@@ -63,6 +76,90 @@ typedef person * person_t;
 person_t new_person() {
   return (person *)malloc(sizeof(person));
 }
+```
+
+### Dynamic memory allocation for arrays
+
+Since we know that we can traverse [arrays](./xp8m.md) using pointers 
+and we can also dynamically allocate contiguous blocks of
+memory using pointers. We can mix this two concept to
+dynamically allocate an array
+
+This is usefull when we don't know at compile time how big
+our array needs to be, so we can allocate as much memory
+as needed at runtime
+
+It's also usefull when we want to create an array inside a
+function stack scope and have still be used by it's parent
+caller if a pointer to the allocated array it's returned
+
+> In this case we use `array` notation to traverse a block
+> of memory from a `pointer`
+
+```c
+#include <stdlib.h>
+
+// Allocate memory to store 5 characters
+
+int n = 5;
+char *pvowels = (char *)malloc(n * sizeof(char));
+
+pvowels[0] = 'A';
+pvowels[1] = 'E';
+*(pvowels + 2) = 'I';
+pvowels[3] = 'O';
+*(pvowels + 4) = 'U';
+
+for (int i = 0; i < n; i++) {
+  printf("%c", pvowels[i]);
+}
+
+free(pvowels);
+
+printf("\n");
+```
+
+### Dynamically allocate a two dimension array
+
+The only difference with the normal way of creating
+a dynamic array is that here we will allocate a pointer
+to a pointer for the main array and then allocate the
+block memory for each pointer
+
+> This can be generalize to n-dimesions arrays
+
+```c
+#inlcude <stdlib.h>
+#include <stdio.h>
+
+int nrows = 2;
+int ncolums = 2;
+
+// Allocate memory for nrows pointers
+char **pbuff = (char **)malloc(nrows * sizeof(char *));
+
+pbuff[0] = (char *)malloc(ncolumns * sizeof(char));
+pbuff[1] = (char *)malloc(ncolumns * sizeof(char));
+
+pbuff[0][0] = 'A';
+pbuff[0][1] = 'B';
+pbuff[1][0] = 'a';
+pbuff[1][1] = 'b';
+
+for (int i = 0; i < nrows; i++) {
+  for (int j = 0; j < ncolumns; j++) {
+    printf("%c", pbuff[i][j]);
+  }
+
+  printf("\n")
+}
+
+// Free individual row pointers
+free(pbuff[0])
+free(pbuff[1])
+
+// Free top level pointer
+free(pbuff)
 ```
 
 ### Free allocated data
