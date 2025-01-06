@@ -1,4 +1,4 @@
-# lang.c.data.linked_list
+# cpt.data.linked_list
 
 A dynamic data structure that uses pointers
 
@@ -229,4 +229,57 @@ int remove_last(node_t *head) {
 ### Remove an especific item from a linked list
 
 To remove an item from any point of the linked list,
-either by it's index or value
+either by it's index or value, we will need to go over
+all the items, continuously looking ahead to find out
+if we've reached the node before the item we wish to
+remove
+
+This is beacuse we need to change the location to where
+the previousnode points to  as well
+
+- Iterate to the `node` before the `node` we wish to delete
+- Save the `node` we wish to delete in a temporary `pointer`
+- Set the previous `node` next `ponter` to point to the `node` after
+  the `node` we wish to delete
+- Delete the `node` using the temporary `pointer`
+
+```c
+int slice(node_t **head, int index) {
+  int value = -1;
+
+  node_t *current = *head;
+  node_t *temp = NULL;
+
+  if (index == 0) {
+    // From the implementation seen above
+    return pop(head);
+  }
+
+  // Assuming that they have to pass 0 index values
+  // We don't want for current to be the target node 
+  // to extract and thus we do `index-1`
+  for (int i = 0; i < index-1; i++) {
+    // Check that there is next node to go to
+    if (current->next == NULL) {
+      // Set an out of index error
+      return -1;
+    }
+
+    current = current->next;
+  }
+
+  // Check that the target value to extract exist
+  if (current->next == NULL) {
+    // Set an out of index error
+    return -1;
+  }
+
+  temp = current->next;
+
+  value = temp->value;
+  current->next = temp->nex;
+  free(temp);
+
+  return value
+}
+```
