@@ -42,6 +42,8 @@ A linked list is held using a local `pointer` variable which
 points to the first item of the list, if that `pointer` is
 also `NULL` then the list is considered empty
 
+## Cookbook
+
 ### Simple implementation of linked list in `c`
 
 For a simple implementation we will
