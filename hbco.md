@@ -70,4 +70,106 @@ parts, *((char *)&parts+0), *((char *)&parts+1), *((char *)&parts+2), *((char *)
 
 ### Create a tagged union
 
+If you comine unions and structs you can have `tagged unions`, which can be
+used to **store multiple different types** one at a time
+
+For example let's say you have a `number` struct that you want to
+use to store different types of numbers depending on their size
+
+You could do something like this:
+
+```c
+struct number {
+  int type; // To know what type to access
+  int intNum;
+  float floatNum;
+  double doubleNum;
+};
+```
+
+This is ok but know you will have a struct that it's the size of
+the sum of all it's types, even though you just will want to
+effectively store one type per struct instance
+
+
+You could then do something like this instead:
+
+```c
+struct number {
+  int type; // To know what type to access
+  union {
+    int intNum;
+    float floatNum;
+    double doubleNum;
+  } num_t;
+};
+
+struct number n;
+n.type = 0; // This might be better as a type or a constant
+n.num_t.intNum = 32;
+```
+
+This way the total size of the struct is only the size of 
+the `type` + the size of the largets type of the union (in this case
+it's `double`)
+
 ### Access the members of union directly in the struct
+
+You can omit having to access the members of a nested `union`
+in a struct with the name of the union if you just don't include
+it in the nested definition
+
+> This are also called anonymus unions
+
+```c
+typedef struct {
+  int type; // To know what type to access
+  union {
+    int intNum;
+    float floatNum;
+    double doubleNum;
+  }; // no name!
+} number;
+
+number n;
+n.type = 0;
+n.intNum = 32; // Access directly
+```
+
+### Use structs inside a union for name and index access
+
+An intersting use case for structs inside unions is that
+you can use it to access members of a struct both by name
+(for readability) and by index (for iteration)
+
+This can happen if the elements of your struct are of the
+same size and you have an array of the same size and type
+since the memory layouts will match
+
+> In this case the order of the structs will match the
+> order where they are found in the array
+
+```c
+union Coins {
+  // A struct the tracks the count of each coin
+  struct {
+    int quarter;
+    int dime;
+    int nickel;
+    int penny;
+  }; // anonymus strcucts can also be access directly
+  int coins[4];
+};
+
+union Coins change;
+// We compute the size of the array here (total_bytes_size / element_bytes_size)
+for (int i = 0; i < sizeof(change) / sizeof(int); i++) {
+    change.coins[i] = i * 2;
+}
+
+// There are 0 quarters, 2 dimes, 4 nickels, and 6 pennies
+printf("There are %i quarters, %i dimes, %i nickels, and %i pennies\n",
+change.quarter, change.dime, change.nickel, change.penny);
+```
+
+### Access a tag union using a switch case
