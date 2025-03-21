@@ -1,3 +1,7 @@
+---
+tags: ["networking", "linux", "dns"]
+---
+
 # cli.dig
 
 A powerfull and feature rich `DNS` lookup utility

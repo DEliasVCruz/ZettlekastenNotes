@@ -1,3 +1,7 @@
+---
+tags: ["users", "linux", "sys_admin"]
+---
+
 # linux.user.authentication
 
 Perform authentication against the /etc/passwd and /etc/shadow files

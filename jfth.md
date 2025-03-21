@@ -193,3 +193,93 @@ char name[14] = "Daniel Vilela";
 
 name[0] = '\0';
 ```
+
+### Convert a string to a number
+
+You can use the `atoi`, `atol` functions, from the `<stdlib.h>` 
+to convert from an [ascii](./q8iq.md) string to a `int` 
+or `long` respectively, this however do not detect errors on 
+the conversion from string to number
+
+```c
+char *str_value = "16";
+int value = atoi(str_value);
+```
+
+### Convert a string to a number while handling errors
+
+If you want to handle errors then you need the `strtol` function
+from the `<stdlib.h>` library. It will handle the base you give
+it for the `ascii` number and it can take a `pointer` to a `char *`
+to set where the parsing stopped due to a non numeric character
+
+This means you can check if the the provied string started with
+a non numeric value by checking if the pointers are the same, and
+check if it contained a non numeric character by checking then
+if the pointer does not point to the `null terminator`
+
+For other kind of errors (like out of bound value) you can check
+the `errno` value that will be set after the call
+
+```c
+#include <stdlib.h>
+#include <errno.h>
+#include <limits.h>
+#include <stdio.h>
+
+int main(int argc, char **argv) {
+  char *value_str = argv[1];
+  char *endptr;
+
+  long value = strtol(value_str, &endptr, 10); // On base 10
+
+  if ((errno == ERANGE && (value == LONG_MIN || value == LONG_MAX)) || 
+    (errno != 0 && value == 0)) {
+    
+    perror("strtol");
+
+    return 1;
+  }
+
+  if (endptr == value_str) {
+    printf("Pliss use a numeric value\n");
+
+    return 1;
+  }
+
+  if (*endptr != '\0') {
+    printf("Pliss use a numeric value\n");
+
+    return 1;
+  }
+}
+```
+
+### Convert a number into a string
+
+To be able to convert a number into a string you will first 
+need to find out how big of a `buffer` you are going to need
+to store the string, you can use the property of the `snprintf`
+function of telling you how much it would have write, to
+get that size, then allocate a buffer and actually write it
+
+```c
+#include <stdio.h>
+
+int main() {
+  int my_number = 1340;
+
+  // Pass a null buffer and set max write to 0
+  int buff_size = snprintf(NULL, 0, "%d", my_number);
+
+  // Add one to account for the null terminator
+  char str_buff[buff_size + 1];
+
+
+  snprintf(str_buff, buff_size+1, "%d", my_number);
+
+  printf("%s\n", str_buff);
+
+  return 0;
+}
+```

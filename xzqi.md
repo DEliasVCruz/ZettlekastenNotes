@@ -1,8 +1,8 @@
 ---
-tags: ["networking"]
+tags: ["simd", "vectors"]
 ---
 
-# cpt.network.containers
+# lang.c.vectors
 
 
 

@@ -1,8 +1,8 @@
 ---
-tags: ["networking"]
+tags: ["networking", "linux", "sockets"]
 ---
 
-# cpt.network.containers
+# cli.ss
 
 
 

@@ -1,3 +1,7 @@
+---
+tags: ["files", "linux", "sys_admin"]
+---
+
 # cli.chown
 
 Change file and directory user ownership
