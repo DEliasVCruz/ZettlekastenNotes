@@ -2,7 +2,7 @@
 tags: ["debugging"]
 ---
 
-# cli.strace
+# cli.ltrace
 
 
 
