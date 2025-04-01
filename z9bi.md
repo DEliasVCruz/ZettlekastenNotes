@@ -58,6 +58,10 @@ is** [revert](./36re.md)
 Although you can use `reset` to remove a file from the staging area
 it is not recommended since it can have unintended consequences
 
+```sh
+git reset HEAD <filename>
+```
+
 It's better to use the [restore](./8m7k.md) command for this operation
 
 ```sh

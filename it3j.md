@@ -58,6 +58,26 @@ commit associated to that branch
   git checkout [<commitid>] <[deleted]file>
 ```
 
+### Remove the changes done to a modifed file
+
+If you want to discard the changes to a file in the working
+directory, meaning you want to unmodify a file. You can use the
+`cheout` command to do so
+
+```sh
+git checkout -- <file>
+```
+
+### Jump to a previously checked out branch
+
+You can quickly checkout back to the last branch you were
+checkedout to by pasing `-` to either the `checkout` or
+`switch` command
+
+```sh
+git [checkout|switch] -
+```
+
 ### Create and move the new branch
 
 You can use the `-b` option to both switch to another and create it if it does
