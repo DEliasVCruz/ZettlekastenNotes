@@ -29,7 +29,7 @@ with the `[]` operator we are actually dereferencing a pointer
 to an offset from where the array pointer is
 
 When you declare an array as part of the local context (stack) it
-will retain the information of it's lenght and the type of data that
+will retain the information of it's length and the type of data that
 it have, but when you pass it as [function](./nt45.md) argument, it will
 **degrade** into a pointer type and thus it will loose all the
 information that it had as an array
@@ -42,7 +42,7 @@ element of an array.
 
 This means that given an `char array[5];` (where the size of `char` is
 `1 byte`) the notations `array`, `&array[0]` and `array + 0` will
-all retunr a pointer that points to the same location
+all return a pointer that points to the same location
 
 Further more, given the same example, `*(array + 1)` and `array[1]`
 will give the same (dereferenced) value
@@ -110,4 +110,44 @@ int numbers[][4] = {
   {4, 5, 6, 7},
   {8, 9, 10, 11}
 };
+```
+
+This is more like syntactic sugar since under the hood it will still
+be a one dimensional array, as when it's passed to a function it will
+degrade to single pointer to the array type value
+
+```
+int numbers[3][4] = {
+  {0, 1, 2, 3},
+  {4, 5, 6, 7},
+  {8, 9, 10, 11}
+};
+
+// The same as
+
+int numbers[12] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+```
+
+### Indexing into a one dimensional representation of a two dimensional array
+
+There is a neet trick for indexing into a two dimensional array that
+it's represented as a one dimensional array
+
+If you know the width of each row (meaning how many elements are in a row)
+then you can use that and multiply it by the index number row you want
+to get to, and then off set it by the column you want to get to
+
+```c
+int numbers[3][4] = {
+  {0, 1, 2, 3},
+  {4, 5, 6, 7},
+  {8, 9, 10, 11}
+};
+
+int row_width = 4;
+
+// Get the value at cords (2, 2) starting offsets at 0
+int value = numbers[2 * row_width * 2];
+
+printf("The number is %d\n", value); // The number is 10
 ```

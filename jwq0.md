@@ -2,13 +2,13 @@
 tags: ["io", "files"]
 ---
 
-# lang.c.file.read
+# lang.c.file.write
 
-Handling read operations with files in `c`
+Handling write operations with files in `c`
 
 ## Synopsis
 
-```c
+```language
 #include <stdio.h>
 
 FILE *file = fopen("example.txt", "r");
@@ -17,21 +17,21 @@ if (file == NULL) {
   return 1;
 }
 
-int num;
-fscanf(file, "%d", &num);
+int num = 2;
+fprintf(ptr, "%d", num);
 ```
 
 ## Overview
 
 The `c` standard library gives us a set of functions to
-read data from text or binary files
+write data to text or binary files
 
 ## Cookbook
 
-### Reading a string or character from a file stream
+### Writing a string or character to a file stream
 
-You can use the `fgets` and `fscanf` functions to read
-a string or pattern, respectively, from a file.
+You can use the `fprintf` function to write a string 
+or pattern to a file.
 
 The `fgets` function will continue to read from the 
 file until the `EOF` or a `newline` is reached, it
@@ -61,7 +61,7 @@ char line[100];
 fscanf(file, "%s", line);
 ```
 
-### Reading a single character from a file stream
+### Writing a single character from a file stream
 
 You can use the `fgetc` function to read a single 
 character at a time from the file.
@@ -74,4 +74,3 @@ reached
 char buffer[100];
 fgets(buffer, sizeof(buffer), file);
 ```
-
