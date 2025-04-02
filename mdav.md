@@ -66,12 +66,67 @@ fscanf(file, "%s", line);
 You can use the `fgetc` function to read a single 
 character at a time from the file.
 
-Keep in mind that `getc` will continue to read a new
+Keep in mind that `fgetc` will continue to read a new
 character from the file until `EOF` or an error is
 reached
 
+> The difference with `getc` is that it may be
+> implemented as a macro in some systems
+
 ```c
-char buffer[100];
-fgets(buffer, sizeof(buffer), file);
+char letter = fgetc(file);
 ```
 
+### Detecting the end of a file
+
+When reading from a text file one character at a time
+you can check for `fgetc` to return the `EOF` value
+
+```c
+char c;
+while ((c = fgetc(file)) != EOF) {
+  ...
+}
+```
+
+### Reading bytes directly from a binary file
+
+You can read the bytes directly from a file with
+the `fread` function. Which is very usefull for binary 
+encoded formats
+
+The function takes 4 arguments:
+- Adress of the data to be read into
+- The size of the data to be read
+- Number of times the data has to be read
+- The pointer to the file to read from
+
+> You can even read structs and arrays provided that 
+> you pass the correct data size of the struct/array
+
+```c
+typedef struct {
+  int num1, num2, num3;
+} my_struct;
+
+int main() {
+  FILE *file = fopen("myfile.bin", "rb"):
+  if (file == NULL) {
+    return 1;
+  }
+
+  my_struct nums[2];
+  // nums is already a pointer to the first struct
+  fread(nums, sizeof(my_struct), 2, file);
+
+  fclose(file);
+
+  my_struct first = nums[0];
+  fprintf("The number: %d, %d, %d\n", first.num1, first.num2, first.num3);
+
+  my_struct second = nums[1];
+  fprintf("The number: %d, %d, %d\n", second.num1, second.num2, second.num3);
+
+  return 0;
+}
+```

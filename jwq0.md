@@ -33,44 +33,63 @@ write data to text or binary files
 You can use the `fprintf` function to write a string 
 or pattern to a file.
 
-The `fgets` function will continue to read from the 
-file until the `EOF` or a `newline` is reached, it
-will read at most `n` characters and will terminate
-with the `null byte` after the last character in the
-buffer
-
-> We could use this to device a way to read line 
-> by line
+You can also use the `fputs` function to write an
+unformatted string into a file with a new line
 
 ```c
-FILE *file;
-char line[100];
-
-fgets(line, sizeof(line), file);
-printf("%s", line);
-```
-
-On the other hand `fscanf` will continue to read
-from the file until it finds the values that fulfill
-it's pattern or `EOF` is reached
-
-```c
-FILE *file;
-char line[100];
-
-fscanf(file, "%s", line);
+int num = 24;
+fprintf(file, "The number is %d\n", num);
+fputs("Another line", file);
 ```
 
 ### Writing a single character from a file stream
 
-You can use the `fgetc` function to read a single 
-character at a time from the file.
+You can use the `fputc` function to write a single 
+character at a time on the file.
 
-Keep in mind that `getc` will continue to read a new
-character from the file until `EOF` or an error is
-reached
+> The difference with `putc` is that it may be
+> implemented as a macro in some systems
 
 ```c
-char buffer[100];
-fgets(buffer, sizeof(buffer), file);
+char letter = 'H';
+fputc(&letter, file);
+```
+
+### Write bytes directly into a binary file
+
+You can write the bytes directly into a file with
+the `fwrite` function. Which is very usefull for binary 
+encoded formats
+
+The function takes 4 arguments:
+- Adress of the data to be written
+- The size of the data to be written
+- Number of times the data has to be written
+- The pointer to the file to write to
+
+> You can even write structs provided that you pass
+> the correct data size of the struct
+
+Assuming that an `int` consist of `4 bytes` then this
+code will write `4 * 3 * 2` bytes into the file
+in the [endianness](./p4bx.md) of the system
+
+```c
+typedef struct {
+  int num1, num2, num3;
+} my_struct;
+
+int main() {
+  FILE *file = fopen("myfile.bin", "wb");
+  if (file == NULL) {
+    return 1;
+  }
+
+  my_struct nums = {12, 24, 15};
+  fwrite(&nums, sizeof(my_struct), 2, file);
+
+  fclose(file);
+
+  return 0;
+}
 ```
